@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ibqy · 个人主页</title>
+<meta name="description" content="ibqy 的个人主页">
+<style>
+  :root{
+    --bg:#0f1117; --card:#181b24; --line:#262b38; --txt:#e7eaf3; --sub:#9aa3b8;
+    --acc:#5b8cff; --acc2:#8b5cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Noto Sans CJK SC","WenQuanYi Micro Hei","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--txt); line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .hero{
+    padding:110px 24px 70px; text-align:center;
+    background:radial-gradient(1200px 500px at 50% -10%, rgba(91,140,255,.25), transparent 60%),
+               radial-gradient(800px 400px at 80% 0%, rgba(139,92,255,.18), transparent 60%);
+  }
+  .avatar{
+    width:88px;height:88px;border-radius:50%;margin:0 auto 22px;
+    background:linear-gradient(135deg,var(--acc),var(--acc2));
+    display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;color:#fff;
+    box-shadow:0 10px 40px rgba(91,140,255,.35);
+  }
+  .hero h1{font-size:40px;letter-spacing:1px}
+  .hero .sub{color:var(--sub);margin-top:10px;font-size:17px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px 80px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:32px;margin-bottom:24px;
+  }
+  .card h2{font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .card h2::before{content:"";width:4px;height:20px;border-radius:2px;background:linear-gradient(var(--acc),var(--acc2))}
+  .card p{color:var(--sub)}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .tag{
+    padding:6px 14px;border-radius:999px;font-size:14px;
+    background:rgba(91,140,255,.12);color:#a8c0ff;border:1px solid rgba(91,140,255,.25);
+  }
+  .links{display:flex;flex-wrap:wrap;gap:14px}
+  .link{
+    flex:1 1 200px;display:flex;align-items:center;gap:12px;
+    padding:16px 18px;border-radius:12px;border:1px solid var(--line);
+    color:var(--txt);text-decoration:none;transition:.2s;
+  }
+  .link:hover{border-color:var(--acc);transform:translateY(-2px)}
+  .link .ic{font-size:22px}
+  footer{text-align:center;color:var(--sub);font-size:13px;padding:30px 0 40px;border-top:1px solid var(--line)}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">i</div>
+  <h1>ibqy</h1>
+  <p class="sub">开发者 · 技术探索者 · 长期主义</p>
+</div>
+
+<div class="wrap">
+  <section class="card">
+    <h2>关于我</h2>
+    <p>你好，我是 <b>ibqy</b>。一名热爱技术的开发者，关注后端架构、AI 应用与大模型技术，喜欢把想法落地成可运行的东西。</p>
+    <p style="margin-top:10px">这里是我的个人主页，用来记录想法、分享技术、沉淀作品。持续学习中。</p>
+  </section>
+
+  <section class="card">
+    <h2>专注方向</h2>
+    <div class="tags">
+      <span class="tag">Java</span>
+      <span class="tag">Spring / Spring AI</span>
+      <span class="tag">大模型 / LLM</span>
+      <span class="tag">Agent</span>
+      <span class="tag">舆情分析</span>
+      <span class="tag">后端架构</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>联系与链接</h2>
+    <div class="links">
+      <a class="link" href="https://github.com/ibqy" target="_blank" rel="noopener">
+        <span><b>GitHub</b><br>github.com/ibqy</span>
+      </a>
+      <a class="link" href="mailto:ibqy@users.noreply.github.com">
+        <span><b>邮箱</b><br>ibqy@users.noreply.github.com</span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<footer>© 2026 ibqy · Powered by GitHub Pages</footer>
+
+</body>
+</html>
