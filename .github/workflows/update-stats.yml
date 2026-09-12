@@ -10,34 +10,26 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Fetch stats from GitHub API
+      - name: Fetch & write stats
         run: |
           mkdir -p data
-          USER_DATA=$(curl -s https://api.github.com/users/ibqy)
-          REPOS=$(echo "$USER_DATA" | jq -r '.public_repos // 0')
-          FOLLOWERS=$(echo "$USER_DATA" | jq -r '.followers // 0')
-          STARS=$(curl -s "https://api.github.com/users/ibqy/repos?per_page=100&type=public" \
-            | jq '[.[].stargazers_count] | add // 0')
-
-          cat > data/stats.json <<EOF
-      {
-        "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-        "public_repos": $REPOS,
-        "followers": $FOLLOWERS,
-        "total_stars": $STARS
-      }
-      EOF
+          jq -n \
+            --arg updated "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg repos "$(curl -s https://api.github.com/users/ibqy | jq -r '.public_repos // 0')" \
+            --arg followers "$(curl -s https://api.github.com/users/ibqy | jq -r '.followers // 0')" \
+            --arg stars "$(curl -s "https://api.github.com/users/ibqy/repos?per_page=100&type=public" | jq '[.[].stargazers_count] // [] | add // 0')" \
+            '{updated:$updated,public_repos:($repos|tonumber),followers:($followers|tonumber),total_stars:($stars|tonumber)}' \
+            > data/stats.json
 
       - name: Commit & push
         run: |
           git config user.name "ibqy[bot]"
           git config user.email "bot@ibqy.dev"
           git add data/stats.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
+          git diff --cached --quiet && echo "No changes" || {
             git commit -m "auto: refresh stats [skip ci]"
             git push
-          fi
+          }
