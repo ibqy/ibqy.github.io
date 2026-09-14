@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ibqy · 代码即教程</title>
-<meta name="description" content="ibqy 的个人主页 — Java 后端 × AI 工程化开发者，维护 12 个全中文注释的开源教学仓库：RAG 混合检索、Agent 编排、Spring AI、DDD 架构、微服务。">
+<meta name="description" content="ibqy 的个人主页 — Java 后端 × AI 工程化开发者，维护全中文注释的开源教学仓库：RAG 混合检索、Agent 编排、Spring AI、DDD 架构、微服务。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
 
 <style>
@@ -237,7 +237,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px 48px;text-align:center
     <div class="hero-tag">// Java 后端 × AI 工程化</div>
     <h1 class="hero-title">代码即<span>教程</span></h1>
     <p class="hero-desc">
-      你好，我是 <b>ibqy</b> —— 维护 12 个全中文注释的开源仓库，
+      你好，我是 <b>ibqy</b> —— 维护全中文注释的开源教学仓库，
       从 RAG 混合检索到多 Agent 编排，每个项目都是一份可以直接运行的教材。
     </p>
     <div class="hero-btns">
@@ -245,9 +245,9 @@ footer{border-top:1px solid var(--line);padding:44px 24px 48px;text-align:center
       <a href="https://github.com/ibqy" class="btn btn-outline" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><b id="repoCount">14</b><span>公开仓库</span></div>
-      <div class="stat"><b>7</b><span>AI 工程仓库</span></div>
-      <div class="stat"><b>5</b><span>后端教学仓库</span></div>
+      <div class="stat"><b id="repoCount">—</b><span>公开仓库</span></div>
+      <div class="stat"><b id="aiCount">—</b><span>AI 工程仓库</span></div>
+      <div class="stat"><b id="backendCount">—</b><span>后端教学仓库</span></div>
     </div>
   </div>
 </section>
@@ -296,8 +296,8 @@ footer{border-top:1px solid var(--line);padding:44px 24px 48px;text-align:center
     <h2 class="section-title fade-in"><span class="hash">#</span>项目</h2>
     <p class="section-sub fade-in">教学与实战并重 · 全中文注释 · 开箱即跑</p>
 
-    <h3 class="group fade-in">🤖 AI 应用工程 <span class="count">× 7</span></h3>
-    <div class="grid">
+    <h3 class="group fade-in">🤖 AI 应用工程 <span class="count" id="aiGroupCount"></span></h3>
+    <div class="grid" id="grid-ai">
 
       <article class="card card-featured fade-in">
         <span class="feat-badge">主推</span>
@@ -345,8 +345,8 @@ footer{border-top:1px solid var(--line);padding:44px 24px 48px;text-align:center
 
     </div>
 
-    <h3 class="group fade-in">⚙️ Java 后端工程 <span class="count">× 5</span></h3>
-    <div class="grid">
+    <h3 class="group fade-in">⚙️ Java 后端工程 <span class="count" id="backendGroupCount"></span></h3>
+    <div class="grid" id="grid-backend">
 
       <article class="card fade-in">
         <h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener">ddd-arch-demo <span class="ext">↗</span></a></h3>
@@ -481,6 +481,17 @@ async function loadStats(){
   }
 }
 loadStats();
+
+/** 按页面实际卡片数量自动填充统计数字，新增仓库后无需手动改数 */
+function syncCounts(){
+  const ai=document.querySelectorAll('#grid-ai .card').length;
+  const be=document.querySelectorAll('#grid-backend .card').length;
+  document.getElementById('aiCount').textContent=ai;
+  document.getElementById('backendCount').textContent=be;
+  document.getElementById('aiGroupCount').textContent='× '+ai;
+  document.getElementById('backendGroupCount').textContent='× '+be;
+}
+syncCounts();
 </script>
 </body>
 </html>
