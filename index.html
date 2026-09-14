@@ -3,195 +3,214 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ibqy · 全栈开发者</title>
-<meta name="description" content="ibqy 的个人作品集 — AI + Java 后端开发者，专注于教学与实战并重的开源项目。">
+<title>ibqy · 代码即教程</title>
+<meta name="description" content="ibqy 的个人主页 — Java 后端 × AI 工程化开发者，维护 12 个全中文注释的开源教学仓库：RAG 混合检索、Agent 编排、Spring AI、DDD 架构、微服务。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
 
 <style>
-/* ===== Reset & Base ===== */
+/* ===== Reset & Tokens ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC',sans-serif;background:#0a0a1a;color:#e8e8f0;line-height:1.6;overflow-x:hidden}
-
-/* ===== Color ===== */
 :root{
-  --bg:#0a0a1a;
-  --surface:#12122a;
-  --surface2:#1a1a3a;
-  --text:#e8e8f0;
-  --text2:#8888aa;
-  --text3:#555577;
-  --grad:linear-gradient(135deg,#667eea,#764ba2);
-  --grad2:linear-gradient(135deg,#667eea,#38bdf8);
-  --accent:#667eea;
-  --glass:rgba(18,18,42,.7);
-  --radius:12px;
+  --bg:#0a0a16;
+  --surface:#10101f;
+  --text:#e8e8f2;
+  --text2:#9a9ab8;
+  --text3:#62628a;
+  --accent:#7c84ff;
+  --accent2:#38bdf8;
+  --grad:linear-gradient(135deg,#7c84ff,#38bdf8);
+  --line:rgba(255,255,255,.08);
+  --radius:10px;
+  --mono:ui-monospace,'Cascadia Code','JetBrains Mono',Consolas,monospace;
 }
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC',sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;
+}
+::selection{background:rgba(124,132,255,.35)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 
 /* ===== Nav ===== */
 nav{
-  position:fixed;top:0;width:100%;z-index:100;
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  background:var(--glass);border-bottom:1px solid rgba(255,255,255,.04);
-  transition:transform .3s
+  position:fixed;top:0;width:100%;z-index:100;height:56px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(10,10,22,.78);border-bottom:1px solid var(--line);
+  transition:transform .3s;
 }
-.nav-inner{
-  max-width:1000px;margin:0 auto;padding:0 24px;height:60px;
-  display:flex;align-items:center;justify-content:space-between
-}
-.nav-logo{font-weight:700;font-size:18px;color:var(--text);text-decoration:none}
-.nav-logo span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:24px;list-style:none}
+.nav-inner{max-width:920px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--text3);text-decoration:none}
+.nav-logo b{color:var(--accent);font-weight:700}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-links{display:flex;gap:20px;list-style:none}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:14px;transition:color .2s}
-.nav-links a:hover{color:var(--accent)}
-.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+.nav-links a:hover{color:var(--text)}
+.nav-gh{
+  font-size:13px;padding:6px 14px;border-radius:8px;text-decoration:none;
+  color:var(--text2);border:1px solid var(--line);transition:color .2s,border-color .2s;
+}
+.nav-gh:hover{color:var(--text);border-color:rgba(124,132,255,.5)}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;line-height:1}
 
 @media(max-width:640px){
-  .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:var(--surface);flex-direction:column;padding:16px 24px;gap:12px;border-bottom:1px solid rgba(255,255,255,.04)}
+  .nav-links{
+    display:none;position:absolute;top:56px;left:0;width:100%;
+    background:var(--surface);flex-direction:column;gap:4px;padding:12px 24px 16px;
+    border-bottom:1px solid var(--line);
+  }
   .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:6px 0;font-size:15px}
   .nav-toggle{display:block}
 }
 
-/* ===== Sections ===== */
-section{padding:40px 24px}
-.wrap{max-width:1000px;margin:0 auto}
+/* ===== Layout ===== */
+section{padding:56px 24px}
+.wrap{max-width:920px;margin:0 auto}
 
 /* ===== Hero ===== */
-#hero{min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+#hero{padding:128px 24px 64px;position:relative;overflow:hidden}
 #hero::before{
-  content:'';position:absolute;top:-30%;right:-20%;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(102,126,234,.15) 0%,transparent 70%);
-  pointer-events:none
+  content:'';position:absolute;top:-30%;right:-15%;width:560px;height:560px;
+  background:radial-gradient(circle,rgba(124,132,255,.12) 0%,transparent 70%);pointer-events:none;
 }
 #hero::after{
-  content:'';position:absolute;bottom:-30%;left:-20%;width:500px;height:500px;
-  background:radial-gradient(circle,rgba(118,75,162,.12) 0%,transparent 70%);
-  pointer-events:none
+  content:'';position:absolute;bottom:-35%;left:-15%;width:480px;height:480px;
+  background:radial-gradient(circle,rgba(56,189,248,.08) 0%,transparent 70%);pointer-events:none;
 }
 .hero-content{position:relative;z-index:1}
-.hero-tag{font-size:13px;color:var(--accent);letter-spacing:2px;margin-bottom:8px}
-.hero-title{font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.15;margin-bottom:12px}
-.hero-title span{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-desc{font-size:16px;color:var(--text2);max-width:560px;margin-bottom:20px}
+.hero-tag{font-family:var(--mono);font-size:13px;color:var(--accent2);margin-bottom:14px}
+.hero-title{font-size:clamp(30px,5vw,46px);font-weight:800;line-height:1.2;letter-spacing:-.5px;margin-bottom:16px}
+.hero-title span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{font-size:16px;color:var(--text2);max-width:620px;margin-bottom:24px}
+.hero-desc b{color:var(--text);font-weight:600}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
 .btn{
-  display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:8px;
-  font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer
+  display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:8px;
+  font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer;
 }
 .btn-primary{background:var(--grad);color:#fff;border:none}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(102,126,234,.35)}
-.btn-outline{border:1px solid var(--text2);color:var(--text2);background:transparent}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,132,255,.3)}
+.btn-outline{border:1px solid var(--line);color:var(--text2);background:transparent}
+.btn-outline:hover{border-color:rgba(124,132,255,.5);color:var(--text);transform:translateY(-2px)}
 
-.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat-val{font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stats{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+.stat b{
+  display:block;font-family:var(--mono);font-size:26px;font-weight:700;line-height:1.2;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat span{font-size:12px;color:var(--text3);letter-spacing:1px}
 
 /* ===== Section title ===== */
-.section-title{
-  font-size:28px;font-weight:700;margin-bottom:8px;
-  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent
-}
-.section-sub{color:var(--text2);font-size:15px;margin-bottom:24px}
+.section-title{font-size:24px;font-weight:700;margin-bottom:6px}
+.section-title .hash{font-family:var(--mono);color:var(--accent);font-weight:600;margin-right:8px}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:28px}
 
 /* ===== About ===== */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.about-card{
-  background:var(--surface);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);
-  padding:16px;transition:transform .25s,border-color .25s
-}
-.about-card:hover{transform:translateY(-3px);border-color:rgba(102,126,234,.2)}
-.about-card-icon{font-size:20px;margin-bottom:6px}
-.about-card h3{font-size:15px;margin-bottom:4px;color:var(--text)}
-.about-card p{font-size:13px;color:var(--text2);line-height:1.6}
-
-.tech-stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.about-lead{font-size:15px;color:var(--text2);max-width:680px}
+.about-lead b{color:var(--text);font-weight:600}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.value b{display:block;font-size:14px;margin-bottom:4px}
+.value p{font-size:13px;color:var(--text2)}
+.tech-stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
 .tech-badge{
-  display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;
-  background:rgba(102,126,234,.1);color:var(--accent);border:1px solid rgba(102,126,234,.2)
+  display:inline-block;padding:4px 12px;border-radius:99px;font-size:12px;
+  background:rgba(124,132,255,.08);color:var(--accent);border:1px solid rgba(124,132,255,.18);
 }
-
-@media(max-width:640px){.about-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.values{grid-template-columns:1fr;gap:18px}}
 
 /* ===== Projects ===== */
-.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.project-card{
-  background:var(--surface);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);
-  padding:16px;transition:all .3s;position:relative;overflow:hidden
+.group{display:flex;align-items:center;gap:12px;margin:36px 0 14px;font-size:15px;font-weight:700}
+.group:first-of-type{margin-top:0}
+.group .count{font-family:var(--mono);font-size:12px;color:var(--text3);font-weight:400}
+.group::after{content:'';flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;transition:border-color .25s,transform .25s;position:relative;
 }
-.project-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad);opacity:0;transition:opacity .3s
+.card:hover{border-color:rgba(124,132,255,.45);transform:translateY(-2px)}
+.card-featured{
+  border:1px solid transparent;
+  background:
+    linear-gradient(var(--surface),var(--surface)) padding-box,
+    linear-gradient(135deg,rgba(124,132,255,.65),rgba(56,189,248,.35)) border-box;
 }
-.project-card:hover{transform:translateY(-4px);border-color:rgba(102,126,234,.2)}
-.project-card:hover::before{opacity:1}
-.project-card-icon{font-size:24px;margin-bottom:6px}
-.project-card h3{font-size:15px;margin-bottom:4px}
-.project-card h3 a{color:var(--text);text-decoration:none}
-.project-card h3 a:hover{color:var(--accent)}
-.project-card p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:8px}
-.project-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
-.project-tag{
-  padding:2px 10px;border-radius:12px;font-size:11px;
-  background:rgba(102,126,234,.08);color:var(--accent)
+.feat-badge{
+  position:absolute;top:14px;right:14px;
+  font-size:11px;font-weight:600;letter-spacing:2px;padding:2px 10px;border-radius:99px;
+  background:var(--grad);color:#fff;
 }
-.project-links{display:flex;gap:8px}
-.project-links a{
-  display:inline-flex;align-items:center;gap:4px;font-size:13px;color:var(--text2);text-decoration:none;
-  padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.06);transition:all .2s
+.card h3{font-size:15px;margin-bottom:6px}
+.card h3 a{
+  font-family:var(--mono);font-size:14px;font-weight:600;
+  color:var(--text);text-decoration:none;transition:color .2s;padding-right:52px;
 }
-.project-links a:hover{color:var(--accent);border-color:rgba(102,126,234,.3)}
-
-@media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
+.card h3 a:hover{color:var(--accent)}
+.card-featured h3 a{padding-right:64px}
+.card h3 .ext{color:var(--text3);font-weight:400}
+.card h3 a:hover .ext{color:var(--accent)}
+.card p{font-size:13px;color:var(--text2);margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{
+  font-size:11px;padding:2px 9px;border-radius:99px;
+  background:rgba(124,132,255,.08);color:var(--accent);border:1px solid rgba(124,132,255,.15);
+}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
 
 /* ===== Blog ===== */
 #blog{background:var(--surface)}
-.blog-list{display:grid;gap:16px}
+.blog-list{display:grid;gap:10px}
 .blog-card{
   display:flex;align-items:flex-start;gap:12px;padding:12px 16px;
-  background:var(--bg);border-radius:var(--radius);border:1px solid rgba(255,255,255,.04);
-  transition:all .25s;text-decoration:none;color:inherit
+  background:var(--bg);border-radius:var(--radius);border:1px solid var(--line);
+  transition:all .25s;text-decoration:none;color:inherit;
 }
-.blog-card:hover{transform:translateX(4px);border-color:rgba(102,126,234,.2)}
-.blog-card-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.blog-card:hover{transform:translateX(4px);border-color:rgba(124,132,255,.4)}
+.blog-card-icon{font-size:17px;flex-shrink:0;margin-top:2px}
 .blog-card h4{font-size:14px;margin-bottom:2px;color:var(--text)}
 .blog-card p{font-size:12px;color:var(--text2)}
 .blog-card .blog-date{font-size:11px;color:var(--text3);margin-top:2px}
 .blog-empty{text-align:center;padding:24px;color:var(--text3)}
 .blog-empty p{font-size:14px;margin-bottom:16px}
+.blog-more{text-align:center;margin-top:16px}
 
-/* ===== Contact ===== */
-.contact-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+/* ===== Skeleton ===== */
+.blog-skeleton{display:grid;gap:10px}
+.skel-card{
+  padding:14px 18px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--line);
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.skel-line{height:13px;background:rgba(255,255,255,.06);border-radius:6px;margin-bottom:8px;width:45%}
+.skel-line:last-child{width:75%;margin-bottom:0}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:.75}}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid var(--line);padding:44px 24px 48px;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .contact-link{
-  display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;
-  font-size:13px;text-decoration:none;transition:all .25s
+  display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;
+  font-size:13px;text-decoration:none;transition:all .25s;
 }
 .contact-gh{background:rgba(255,255,255,.06);color:var(--text)}
 .contact-gh:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
-.contact-em{background:rgba(102,126,234,.1);color:var(--accent)}
-.contact-em:hover{background:rgba(102,126,234,.18);transform:translateY(-2px)}
-.contact-gt{background:rgba(118,75,162,.1);color:#a78bfa}
-.contact-gt:hover{background:rgba(118,75,162,.18);transform:translateY(-2px)}
-.contact-md{background:rgba(56,189,248,.08);color:#38bdf8}
-.contact-md:hover{background:rgba(56,189,248,.15);transform:translateY(-2px)}
-
-/* ===== Footer ===== */
-footer{text-align:center;padding:32px 24px;color:var(--text3);font-size:13px;border-top:1px solid rgba(255,255,255,.04);margin-top: -1px}
-footer a{color:var(--accent);text-decoration:none}
+.contact-em{background:rgba(124,132,255,.1);color:var(--accent)}
+.contact-em:hover{background:rgba(124,132,255,.18);transform:translateY(-2px)}
+.contact-gt{background:rgba(118,75,162,.12);color:#a78bfa}
+.contact-gt:hover{background:rgba(118,75,162,.2);transform:translateY(-2px)}
+.footer-copy{font-size:13px;color:var(--text2)}
+.footer-copy a{color:var(--text);text-decoration:none;font-weight:600}
+.footer-copy a:hover{color:var(--accent)}
+.footer-meta{font-size:12px;color:var(--text3);margin-top:8px}
+.footer-meta code{font-family:var(--mono);font-size:11px;color:var(--text3)}
 
 /* ===== Animations ===== */
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* ===== Skeleton ===== */
-.blog-skeleton{display:grid;gap:16px}
-.skel-card{
-  padding:16px 20px;background:var(--bg);border-radius:var(--radius);border:1px solid rgba(255,255,255,.04);
-  animation:pulse 1.5s ease-in-out infinite
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .fade-in{opacity:1;transform:none}
+  html{scroll-behavior:auto}
 }
-.skel-line{height:14px;background:var(--surface2);border-radius:6px;margin-bottom:8px}
-.skel-line:last-child{width:60%}
-@keyframes pulse{0%,100%{opacity:.4}50%{opacity:.7}}
 </style>
 </head>
 <body>
@@ -199,31 +218,36 @@ footer a{color:var(--accent);text-decoration:none}
 <!-- Nav -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">&lt;<span>ibqy</span>/&gt;</a>
-    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    <ul class="nav-links">
-      <li><a href="#about" onclick="closeNav()">关于</a></li>
-      <li><a href="#projects" onclick="closeNav()">项目</a></li>
-      <li><a href="#blog" onclick="closeNav()">博客</a></li>
-      <li><a href="#contact" onclick="closeNav()">联系</a></li>
-    </ul>
+    <a href="#" class="nav-logo">~/<b>ibqy</b></a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="closeNav()">关于</a></li>
+        <li><a href="#projects" onclick="closeNav()">项目</a></li>
+        <li><a href="#blog" onclick="closeNav()">博客</a></li>
+      </ul>
+      <a class="nav-gh" href="https://github.com/ibqy" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="打开菜单">☰</button>
+    </div>
   </div>
 </nav>
 
 <!-- Hero -->
 <section id="hero">
   <div class="wrap hero-content">
-    <div class="hero-tag">全栈开发者</div>
-    <h1 class="hero-title">你好，我是 <span>ibqy</span></h1>
-    <p class="hero-desc">用代码分享知识，做教学与实战并重的开源项目。专注于 Java 后端与 AI 工程化。</p>
+    <div class="hero-tag">// Java 后端 × AI 工程化</div>
+    <h1 class="hero-title">代码即<span>教程</span></h1>
+    <p class="hero-desc">
+      你好，我是 <b>ibqy</b> —— 维护 12 个全中文注释的开源仓库，
+      从 RAG 混合检索到多 Agent 编排，每个项目都是一份可以直接运行的教材。
+    </p>
     <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">📂 查看项目</a>
-      <a href="https://github.com/ibqy" class="btn btn-outline" target="_blank" rel="noopener">💻 GitHub</a>
-      <a href="https://gitee.com/baiqy" class="btn btn-outline" target="_blank" rel="noopener">🇨🇳 Gitee</a>
+      <a href="#projects" class="btn btn-primary">查看项目 ↓</a>
+      <a href="https://github.com/ibqy" class="btn btn-outline" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-val">5</div><div class="hero-stat-label">核心项目</div></div>
-      <div class="hero-stat"><div class="hero-stat-val" id="repoCount">-</div><div class="hero-stat-label">总仓库数</div></div>
+      <div class="stat"><b id="repoCount">14</b><span>公开仓库</span></div>
+      <div class="stat"><b>7</b><span>AI 工程仓库</span></div>
+      <div class="stat"><b>5</b><span>后端教学仓库</span></div>
     </div>
   </div>
 </section>
@@ -231,31 +255,27 @@ footer a{color:var(--accent);text-decoration:none}
 <!-- About -->
 <section id="about">
   <div class="wrap">
-    <h2 class="section-title fade-in">关于</h2>
-    <p class="section-sub fade-in">全栈开发者 · 开源爱好者 · 教学相长</p>
-    <div class="about-grid">
-      <div class="about-card fade-in">
-        <div class="about-card-icon">🎯</div>
-        <h3>专注方向</h3>
-        <p>Java 后端开发、AI 工程化、Spring AI / MyBatis-Plus / Spring Boot 技术栈。</p>
+    <h2 class="section-title fade-in"><span class="hash">#</span>关于</h2>
+    <p class="section-sub fade-in">教学相长 · 开源分享</p>
+    <p class="about-lead fade-in">
+      相信最好的学习方式是把学到的写成教程——所以这里的每个仓库都带<b>完整中文注释与配套文档</b>，
+      覆盖从 CRUD 到 RAG、从单体到微服务、从基础组件到 Agent 编排的完整路径。
+    </p>
+    <div class="values">
+      <div class="value fade-in">
+        <b>代码即教程</b>
+        <p>仓库本身就是学习路径：注释完整、文档配套、开箱即跑。</p>
       </div>
-      <div class="about-card fade-in">
-        <div class="about-card-icon">📖</div>
-        <h3>开源理念</h3>
-        <p>每个仓库都有完整的中文注释和教学文档，代码即教程，降低学习门槛。</p>
+      <div class="value fade-in">
+        <b>工程化视角</b>
+        <p>不止写 Demo——关注可运行、可复现、贴近生产的实现细节。</p>
       </div>
-      <div class="about-card fade-in">
-        <div class="about-card-icon">🔧</div>
-        <h3>实战经验</h3>
-        <p>从基础 CRUD 到 AI Agent / RAG / 工具调用，覆盖生产级全链路场景。</p>
-      </div>
-      <div class="about-card fade-in">
-        <div class="about-card-icon">🌱</div>
-        <h3>持续学习</h3>
-        <p>关注 Java 生态前沿：Spring AI、Semantic Kernel、AgentScope 等 AI 框架。</p>
+      <div class="value fade-in">
+        <b>持续跟进</b>
+        <p>Spring AI、Semantic Kernel、AgentScope 等新框架第一时间实践。</p>
       </div>
     </div>
-    <div class="tech-stack fade-in" style="margin-top:24px;justify-content:center">
+    <div class="tech-stack fade-in">
       <span class="tech-badge">Java 17+</span>
       <span class="tech-badge">Spring Boot</span>
       <span class="tech-badge">Spring AI</span>
@@ -264,8 +284,8 @@ footer a{color:var(--accent);text-decoration:none}
       <span class="tech-badge">MySQL</span>
       <span class="tech-badge">Redis</span>
       <span class="tech-badge">Docker</span>
-      <span class="tech-badge">Git</span>
       <span class="tech-badge">Maven</span>
+      <span class="tech-badge">Git</span>
     </div>
   </div>
 </section>
@@ -273,61 +293,90 @@ footer a{color:var(--accent);text-decoration:none}
 <!-- Projects -->
 <section id="projects">
   <div class="wrap">
-    <h2 class="section-title fade-in">项目</h2>
-    <p class="section-sub fade-in">教学与实战并重的开源项目</p>
-    <div class="projects-grid">
+    <h2 class="section-title fade-in"><span class="hash">#</span>项目</h2>
+    <p class="section-sub fade-in">教学与实战并重 · 全中文注释 · 开箱即跑</p>
 
-      <div class="project-card fade-in">
-        <div class="project-card-icon">🎓</div>
-        <h3><a href="https://github.com/ibqy/ai-java-teaching-demos" target="_blank" rel="noopener">ai-java-teaching-demos ↗</a></h3>
-        <p>AI Java 教学与实战聚合工程。整合 Spring AI / Alibaba / Semantic Kernel / AgentScope 四大框架，40+ 实战 Demo。</p>
-        <div class="project-tags"><span class="project-tag">Java</span><span class="project-tag">Spring AI</span><span class="project-tag">Agent</span><span class="project-tag">Multi-Module</span></div>
-        <div class="project-links">
-          <a href="https://github.com/ibqy/ai-java-teaching-demos" target="_blank" rel="noopener">📂 GitHub</a>
-          <a href="https://gitee.com/baiqy/ai-java-teaching-demos" target="_blank" rel="noopener">🇨🇳 Gitee</a>
-        </div>
-      </div>
+    <h3 class="group fade-in">🤖 AI 应用工程 <span class="count">× 7</span></h3>
+    <div class="grid">
 
-      <div class="project-card fade-in">
-        <div class="project-card-icon">🤖</div>
-        <h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener">spring-ai-lab ↗</a></h3>
-        <p>Spring AI 全链路实战项目。Chat / Streaming / Structured Output / Tool Calling / RAG 五大模块。完整 REST API。</p>
-        <div class="project-tags"><span class="project-tag">Java</span><span class="project-tag">Spring AI</span><span class="project-tag">LLM</span><span class="project-tag">RAG</span></div>
-        <div class="project-links">
-          <a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener">📂 GitHub</a>
-        </div>
-      </div>
+      <article class="card card-featured fade-in">
+        <span class="feat-badge">主推</span>
+        <h3><a href="https://github.com/ibqy/rag-hybrid-search-demo" target="_blank" rel="noopener">rag-hybrid-search-demo <span class="ext">↗</span></a></h3>
+        <p>RAG 高阶优化全链路：文档预处理 → 高级分块 → 混合检索 → Rerank → 幻觉抑制 → 向量库运维 → 增量更新。</p>
+        <div class="tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
+      </article>
 
-      <div class="project-card fade-in">
-        <div class="project-card-icon">📘</div>
-        <h3><a href="https://github.com/ibqy/mybatis-plus-demo" target="_blank" rel="noopener">mybatis-plus-demo ↗</a></h3>
-        <p>MyBatis-Plus 完整教学实战。Lambda 查询 / CRUD / 分页 / 乐观锁 / 代码生成器 / 事务。10 篇配套文档。</p>
-        <div class="project-tags"><span class="project-tag">Java</span><span class="project-tag">MyBatis-Plus</span><span class="project-tag">Spring Boot</span></div>
-        <div class="project-links">
-          <a href="https://github.com/ibqy/mybatis-plus-demo" target="_blank" rel="noopener">📂 GitHub</a>
-          <a href="https://gitee.com/baiqy/mybatis-plus-demo" target="_blank" rel="noopener">🇨🇳 Gitee</a>
-        </div>
-      </div>
+      <article class="card card-featured fade-in">
+        <span class="feat-badge">主推</span>
+        <h3><a href="https://github.com/ibqy/agent-orchestration-demo" target="_blank" rel="noopener">agent-orchestration-demo <span class="ext">↗</span></a></h3>
+        <p>复杂 Agent 编排实战：推理模式、多 Agent 架构、状态机持久化、分层记忆、工具体系与熔断防护。</p>
+        <div class="tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
+      </article>
 
-      <div class="project-card fade-in">
-        <div class="project-card-icon">📚</div>
-        <h3><a href="https://github.com/ibqy/hutool-advanced-demo" target="_blank" rel="noopener">hutool-advanced-demo ↗</a></h3>
-        <p>Hutool 工具库高级用法示例集。HTTP / 缓存 / JWT / AOP / Excel / 树结构等 10+ 生产场景。</p>
-        <div class="project-tags"><span class="project-tag">Java</span><span class="project-tag">Hutool</span><span class="project-tag">Utility</span></div>
-        <div class="project-links">
-          <a href="https://github.com/ibqy/hutool-advanced-demo" target="_blank" rel="noopener">📂 GitHub</a>
-        </div>
-      </div>
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener">spring-ai-lab <span class="ext">↗</span></a></h3>
+        <p>Spring AI 实战实验室：Chat / Streaming / Structured Output / Tool Calling / RAG 全场景覆盖。</p>
+        <div class="tags"><span>Spring AI</span><span>LLM</span><span>RAG</span></div>
+      </article>
 
-      <div class="project-card fade-in">
-        <div class="project-card-icon">🌩</div>
-        <h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener">spring-cloud-micro-demo ↗</a></h3>
-        <p>Spring Cloud 微服务教学项目。Gateway 网关 + OpenFeign 声明式调用 + 用户/订单业务场景。多模块架构。</p>
-        <div class="project-tags"><span class="project-tag">Java</span><span class="project-tag">Spring Cloud</span><span class="project-tag">Gateway</span><span class="project-tag">OpenFeign</span></div>
-        <div class="project-links">
-          <a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener">📂 GitHub</a>
-        </div>
-      </div>
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/spring-ai-teaching-demo" target="_blank" rel="noopener">spring-ai-teaching-demo <span class="ext">↗</span></a></h3>
+        <p>Spring AI 教学演示：基础 / 流式 / 结构化 / 提示词 / 函数调用 / Advisor 全场景。</p>
+        <div class="tags"><span>Spring AI</span><span>教学</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/spring-ai-alibaba-teaching-demo" target="_blank" rel="noopener">spring-ai-alibaba-teaching-demo <span class="ext">↗</span></a></h3>
+        <p>Spring AI Alibaba 教学演示：通义千问 DashScope 全场景覆盖。</p>
+        <div class="tags"><span>Spring AI</span><span>通义千问</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" target="_blank" rel="noopener">semantic-kernel-java-teaching-demo <span class="ext">↗</span></a></h3>
+        <p>Semantic Kernel for Java：Kernel / ChatHistory / 插件 / 工具调用 / Agentic。</p>
+        <div class="tags"><span>Semantic Kernel</span><span>Agentic</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/agentscope-java-teaching-demo" target="_blank" rel="noopener">agentscope-java-teaching-demo <span class="ext">↗</span></a></h3>
+        <p>AgentScope for Java：HarnessAgent / 多智能体 / 记忆 / 流式。</p>
+        <div class="tags"><span>AgentScope</span><span>多智能体</span></div>
+      </article>
+
+    </div>
+
+    <h3 class="group fade-in">⚙️ Java 后端工程 <span class="count">× 5</span></h3>
+    <div class="grid">
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener">ddd-arch-demo <span class="ext">↗</span></a></h3>
+        <p>DDD 领域驱动设计教学：电商订单场景四层架构落地。</p>
+        <div class="tags"><span>DDD</span><span>架构设计</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/pay-teaching-demo" target="_blank" rel="noopener">pay-teaching-demo <span class="ext">↗</span></a></h3>
+        <p>支付宝 + 微信支付官方 SDK 对接实战教学。</p>
+        <div class="tags"><span>支付</span><span>SDK 对接</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener">spring-cloud-micro-demo <span class="ext">↗</span></a></h3>
+        <p>Spring Cloud 微服务教学：Gateway + OpenFeign + 用户/订单服务。</p>
+        <div class="tags"><span>Spring Cloud</span><span>Gateway</span><span>OpenFeign</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/mybatis-plus-demo" target="_blank" rel="noopener">mybatis-plus-demo <span class="ext">↗</span></a></h3>
+        <p>MyBatis-Plus 完整教学：Lambda 查询 / CRUD / 代码生成器 / 事务，含 10 篇配套文档。</p>
+        <div class="tags"><span>MyBatis-Plus</span><span>ORM</span></div>
+      </article>
+
+      <article class="card fade-in">
+        <h3><a href="https://github.com/ibqy/hutool-advanced-demo" target="_blank" rel="noopener">hutool-advanced-demo <span class="ext">↗</span></a></h3>
+        <p>Hutool 高级用法：HTTP / 缓存 / JWT / AOP / Excel / 树结构等 10+ 场景。</p>
+        <div class="tags"><span>Hutool</span><span>工具库</span></div>
+      </article>
 
     </div>
   </div>
@@ -336,30 +385,16 @@ footer a{color:var(--accent);text-decoration:none}
 <!-- Blog (from GitHub Issues) -->
 <section id="blog">
   <div class="wrap">
-    <h2 class="section-title fade-in">博客</h2>
+    <h2 class="section-title fade-in"><span class="hash">#</span>博客</h2>
     <p class="section-sub fade-in">来自 GitHub Issues 的最新文章</p>
     <div id="blogContainer">
       <div class="blog-skeleton">
         <div class="skel-card"><div class="skel-line"></div><div class="skel-line"></div></div>
         <div class="skel-card"><div class="skel-line"></div><div class="skel-line"></div></div>
-        <div class="skel-card"><div class="skel-line"></div><div class="skel-line"></div></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:16px">
-      <a href="https://github.com/ibqy/ibqy/issues?q=label%3Ablog" class="btn btn-outline" target="_blank" rel="noopener">📝 查看全部文章</a>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-  <div class="wrap" style="text-align:center">
-    <h2 class="section-title fade-in" style="display:inline-block">联系</h2>
-    <p class="section-sub fade-in">一起交流技术</p>
-    <div class="contact-links fade-in">
-      <a href="https://github.com/ibqy" class="contact-link contact-gh" target="_blank" rel="noopener">💻 GitHub</a>
-      <a href="mailto:1274464354@qq.com" class="contact-link contact-em">📧 Email</a>
-      <a href="https://gitee.com/baiqy" class="contact-link contact-gt" target="_blank" rel="noopener">🇨🇳 Gitee</a>
+    <div class="blog-more fade-in">
+      <a href="https://github.com/ibqy/ibqy/issues?q=label%3Ablog" class="btn btn-outline" target="_blank" rel="noopener">查看全部文章 ↗</a>
     </div>
   </div>
 </section>
@@ -367,27 +402,39 @@ footer a{color:var(--accent);text-decoration:none}
 <!-- Footer -->
 <footer>
   <div class="wrap">
-    <p>© 2026 <a href="https://github.com/ibqy">ibqy</a> · 用心构建 · <span id="lastUpdated"></span></p>
+    <div class="footer-links fade-in">
+      <a href="https://github.com/ibqy" class="contact-link contact-gh" target="_blank" rel="noopener">💻 GitHub</a>
+      <a href="mailto:1274464354@qq.com" class="contact-link contact-em">📧 Email</a>
+      <a href="https://gitee.com/baiqy" class="contact-link contact-gt" target="_blank" rel="noopener">🇨🇳 Gitee</a>
+    </div>
+    <p class="footer-copy">© 2026 <a href="https://github.com/ibqy">ibqy</a> · 代码即教程</p>
+    <p class="footer-meta">数据更新于 <span id="lastUpdated">—</span> · GitHub Actions 每日自动维护 <code>stats.json</code></p>
   </div>
 </footer>
 
 <script>
-// === Nav hide on scroll ===
-let lastScroll=0;const nav=document.getElementById('navbar');
+/** 移动端导航：点击链接后收起菜单 */
+function closeNav(){document.getElementById('navLinks').classList.remove('open')}
+
+/** 滚动时自动隐藏/显示顶部导航栏 */
+let lastScroll=0;
+const nav=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{
   const cur=window.scrollY;
   nav.style.transform=cur>lastScroll&&cur>80?'translateY(-100%)':'translateY(0)';
   lastScroll=cur;
 });
-function closeNav(){document.querySelector('.nav-links').classList.remove('open')}
 
-// === Intersection Observer for fade-in ===
+/** 元素进入视口后触发淡入动画 */
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
 },{threshold:.1});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-// === Fetch GitHub Issues as Blog ===
+/** 将任意文本转义为安全 HTML，防止 Issues 内容注入 */
+function escapeHtml(s){const d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
+
+/** 从 GitHub Issues 拉取带 blog 标签的文章并渲染列表 */
 async function loadBlog(){
   try{
     const res=await fetch('https://api.github.com/repos/ibqy/ibqy/issues?labels=blog&state=open&per_page=5&sort=created&direction=desc');
@@ -395,7 +442,7 @@ async function loadBlog(){
     const issues=await res.json();
     const c=document.getElementById('blogContainer');
     if(!issues.length){
-      c.innerHTML='<div class="blog-empty"><p>📝 还没有博客文章。在 GitHub Issues 中添加 <code>blog</code> 标签即可发布。<p></div>';
+      c.innerHTML='<div class="blog-empty"><p>📝 还没有博客文章。在 GitHub Issues 中添加 <code>blog</code> 标签即可发布。</p></div>';
       return;
     }
     c.innerHTML='<div class="blog-list">'+issues.map(i=>
@@ -410,21 +457,30 @@ async function loadBlog(){
     ).join('')+'</div>';
   }catch(e){
     document.getElementById('blogContainer').innerHTML=
-      '<div class="blog-empty"><p>⚠️ 博客加载失败。前往 <a href="https://github.com/ibqy/ibqy/issues" style="color:var(--accent)">GitHub Issues</a> 查看最新文章。<p></div>';
+      '<div class="blog-empty"><p>⚠️ 博客加载失败。前往 <a href="https://github.com/ibqy/ibqy/issues" style="color:var(--accent)">GitHub Issues</a> 查看最新文章。</p></div>';
   }
 }
-function escapeHtml(s){const d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
 loadBlog();
 
-// === Fetch repo count ===
-fetch('https://api.github.com/users/ibqy')
-  .then(r=>r.json())
-  .then(d=>{document.getElementById('repoCount').textContent=d.public_repos})
-  .catch(()=>{document.getElementById('repoCount').textContent='-'});
-
-// === Footer last updated ===
-const now=new Date();
-document.getElementById('lastUpdated').textContent='最后更新: '+now.toLocaleDateString('zh-CN');
+/** 读取同源 data/stats.json 填充仓库数与更新时间，失败时回退 GitHub API */
+async function loadStats(){
+  const repoCount=document.getElementById('repoCount');
+  const lastUpdated=document.getElementById('lastUpdated');
+  try{
+    const res=await fetch('data/stats.json');
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const s=await res.json();
+    repoCount.textContent=s.public_repos;
+    lastUpdated.textContent=new Date(s.updated).toLocaleDateString('zh-CN');
+  }catch(e){
+    try{
+      const r=await fetch('https://api.github.com/users/ibqy');
+      const d=await r.json();
+      repoCount.textContent=d.public_repos;
+    }catch(_){/* 保持默认值 */}
+  }
+}
+loadStats();
 </script>
 </body>
 </html>
