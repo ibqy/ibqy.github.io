@@ -7,25 +7,30 @@ hero:
   tagline: "Java 后端开发者，正在探索 AI 工程的边界。相信写代码是最好的学习方式——每一行都是在构建更好的自己。"
   actions:
     - theme: brand
-      text: 我的旅程 ↓
-      link: /#philosophy
+      text: 开始探索
+      link: /#explorations
     - theme: alt
-      text: GitHub ↗
+      text: GitHub
       link: https://github.com/ibqy
 ---
+
+<div class="hero-badge">个人成长记录</div>
 
 <div class="hero-typing">
   <span>I build </span><span class="typed-text" id="typed"></span><span class="typing-cursor"></span>
 </div>
 
-<div class="scroll-hint">
-  <span>scroll</span>
-  <div class="scroll-line"></div>
+<div class="stats-bar">
+<div class="stats-inner fade-up">
+<div class="stat-item"><div class="stat-num"><span class="accent" id="repoCount">—</span>+</div><div class="stat-label">公开项目</div></div>
+<div class="stat-item"><div class="stat-num"><span class="accent">7</span></div><div class="stat-label">探索方向</div></div>
+<div class="stat-item"><div class="stat-num"><span class="accent">3</span></div><div class="stat-label">成长阶段</div></div>
+</div>
 </div>
 
 <section id="philosophy" class="custom-section">
 <div class="wrap">
-<div class="section-label">PHILOSOPHY</div>
+<div class="section-label fade-up">PHILOSOPHY</div>
 <h2 class="section-title fade-up">我相信的事</h2>
 <p class="section-sub fade-up">写代码这些年，慢慢沉淀下来的几个信念。</p>
 <div class="philosophy-grid fade-up">
@@ -50,7 +55,7 @@ hero:
 
 <section id="journey" class="custom-section section-dark">
 <div class="wrap">
-<div class="section-label">JOURNEY</div>
+<div class="section-label fade-up">JOURNEY</div>
 <h2 class="section-title fade-up">成长轨迹</h2>
 <p class="section-sub fade-up">从一个 Java 新手到 AI 工程探索者。</p>
 <div class="journey-list fade-up">
@@ -92,59 +97,98 @@ hero:
 
 <section id="explorations" class="custom-section">
 <div class="wrap">
-<div class="section-label">EXPLORATIONS</div>
-<h2 class="section-title fade-up">探索</h2>
-<p class="section-sub fade-up">每个项目都是一次学习实验。</p>
-<div class="explore-grid fade-up">
-<article class="explore-card explore-featured">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/rag-hybrid-search-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">RAG 混合检索优化</a></h3>
-<p>从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
-<div class="explore-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
+<div class="section-label fade-up">EXPLORATIONS</div>
+<h2 class="section-title fade-up">探索方向</h2>
+<p class="section-sub fade-up">每个方向都是一条学习路径，记录从入门到实践的全过程。</p>
+
+<div class="quick-nav fade-up" style="margin-bottom:32px">
+<a href="#topic-01"><span class="qn-num">01</span>RAG 检索</a>
+<a href="#topic-02"><span class="qn-num">02</span>Agent 编排</a>
+<a href="#topic-03"><span class="qn-num">03</span>Spring AI</a>
+<a href="#topic-04"><span class="qn-num">04</span>微服务</a>
+</div>
+
+<div class="topic-list fade-up">
+
+<article class="topic-card" id="topic-01">
+<div class="topic-header">
+<span class="topic-num">01</span>
+<h3><a href="https://github.com/ibqy/rag-hybrid-search-demo" target="_blank" rel="noopener">RAG 混合检索优化</a></h3>
+</div>
+<p class="topic-desc">从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
+<p class="topic-detail">笔记按数据流顺序展开：文档切分策略 → 向量嵌入选型 → 混合检索（BM25 + 向量）→ Rerank 重排序 → 幻觉抑制。每一步都对照真实场景的调参经验。</p>
+<div class="topic-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span><span>向量数据库</span></div>
+<a href="https://github.com/ibqy/rag-hybrid-search-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card explore-featured">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/agent-orchestration-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">多 Agent 编排系统</a></h3>
-<p>探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
-<div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
+
+<article class="topic-card" id="topic-02">
+<div class="topic-header">
+<span class="topic-num">02</span>
+<h3><a href="https://github.com/ibqy/agent-orchestration-demo" target="_blank" rel="noopener">多 Agent 编排系统</a></h3>
+</div>
+<p class="topic-desc">探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
+<p class="topic-detail">从单 Agent ReAct 模式出发，逐步扩展到多 Agent 协作架构。关注状态机持久化、记忆分层（工作记忆 / 长期记忆 / 情景记忆）、以及工具调用的容错设计。</p>
+<div class="topic-tags"><span>Agent</span><span>多智能体</span><span>编排</span><span>状态机</span></div>
+<a href="https://github.com/ibqy/agent-orchestration-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Spring AI 实验室</a></h3>
-<p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
-<div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
+
+<article class="topic-card" id="topic-03">
+<div class="topic-header">
+<span class="topic-num">03</span>
+<h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
+</div>
+<p class="topic-desc">在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用、RAG 全场景覆盖。</p>
+<div class="topic-tags"><span>Spring AI</span><span>LLM</span><span>Tool Calling</span></div>
+<a href="https://github.com/ibqy/spring-ai-lab" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Semantic Kernel 实践</a></h3>
-<p>微软 SK 框架的 Java 实现：Kernel 架构、插件系统、Agentic 模式。</p>
-<div class="explore-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
+
+<article class="topic-card" id="topic-04">
+<div class="topic-header">
+<span class="topic-num">04</span>
+<h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener">微服务架构实践</a></h3>
+</div>
+<p class="topic-desc">Spring Cloud 全栈实践：Gateway 网关、OpenFeign 服务调用、用户/订单服务拆分、链路追踪。</p>
+<div class="topic-tags"><span>Spring Cloud</span><span>Gateway</span><span>微服务</span></div>
+<a href="https://github.com/ibqy/spring-cloud-micro-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">DDD 架构实践</a></h3>
-<p>用电商场景落地四层架构，真正理解领域驱动设计。</p>
-<div class="explore-tags"><span>DDD</span><span>架构</span></div>
+
+<article class="topic-card" id="topic-05">
+<div class="topic-header">
+<span class="topic-num">05</span>
+<h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener">DDD 领域驱动设计</a></h3>
+</div>
+<p class="topic-desc">用电商订单场景落地四层架构，真正理解领域驱动设计中的聚合、值对象、领域事件。</p>
+<div class="topic-tags"><span>DDD</span><span>架构设计</span><span>领域模型</span></div>
+<a href="https://github.com/ibqy/ddd-arch-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">微服务架构探索</a></h3>
-<p>Spring Cloud 全栈实践：网关、服务发现、熔断、链路追踪。</p>
-<div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
+
+<article class="topic-card" id="topic-06">
+<div class="topic-header">
+<span class="topic-num">06</span>
+<h3><a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
+</div>
+<p class="topic-desc">微软 SK 框架的 Java 实现：Kernel 架构、插件系统、ChatHistory、Agentic 模式。</p>
+<div class="topic-tags"><span>Semantic Kernel</span><span>Agentic</span><span>插件</span></div>
+<a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
-<article class="explore-card">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://github.com/ibqy/agentscope-java-teaching-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">AgentScope 多智能体</a></h3>
-<p>探索 Java 生态的多智能体框架：记忆、流式、协作。</p>
-<div class="explore-tags"><span>AgentScope</span><span>多智能体</span></div>
+
+<article class="topic-card" id="topic-07">
+<div class="topic-header">
+<span class="topic-num">07</span>
+<h3><a href="https://github.com/ibqy/agentscope-java-teaching-demo" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
+</div>
+<p class="topic-desc">探索 Java 生态的多智能体框架：HarnessAgent、记忆系统、流式输出、多智能体协作。</p>
+<div class="topic-tags"><span>AgentScope</span><span>多智能体</span><span>记忆</span></div>
+<a href="https://github.com/ibqy/agentscope-java-teaching-demo" class="topic-cta" target="_blank" rel="noopener">进入项目 →</a>
 </article>
+
 </div>
 </div>
 </section>
 
 <section id="reflections" class="custom-section section-dark">
 <div class="wrap">
-<div class="section-label">REFLECTIONS</div>
+<div class="section-label fade-up">REFLECTIONS</div>
 <h2 class="section-title fade-up">思考</h2>
 <p class="section-sub fade-up">一些关于技术和成长的想法。</p>
 <div id="blogContainer" class="fade-up">
