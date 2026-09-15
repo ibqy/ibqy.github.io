@@ -59,7 +59,7 @@ hero:
 <div class="journey-body">
 <div class="journey-year">起步</div>
 <h3>Java 基础夯实</h3>
-<p>从零开始学 Java，扎实掌握语言基础和 Spring 全家桶。这个阶段最重要的不是技术深度，而是建立了"写出来才能学会"的习惯。</p>
+<p>从零开始学 Java，扎实掌握语言基础和 Spring 全家桶。建立了"写出来才能学会"的习惯。</p>
 </div>
 </div>
 <div class="journey-card">
@@ -67,7 +67,7 @@ hero:
 <div class="journey-body">
 <div class="journey-year">进阶</div>
 <h3>微服务与架构设计</h3>
-<p>深入 Spring Cloud 生态，学习 DDD 领域驱动设计。开始理解：好的代码不只是能跑，更要能维护、能演进。</p>
+<p>深入 Spring Cloud 生态，学习 DDD 领域驱动设计。好的代码不只是能跑，更要能维护、能演进。</p>
 </div>
 </div>
 <div class="journey-card">
@@ -95,55 +95,48 @@ hero:
 <div class="section-label">EXPLORATIONS</div>
 <h2 class="section-title fade-up">探索</h2>
 <p class="section-sub fade-up">每个项目都是一次学习实验。</p>
-<div class="bento-grid fade-up">
-<article class="bento-card bento-feat">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">01</span>
-<h3><a href="https://github.com/ibqy/rag-hybrid-search-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">RAG 混合检索优化</a></h3>
+<div class="explore-grid fade-up">
+<article class="explore-card explore-featured">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/rag-hybrid-search-demo" target="_blank" rel="noopener">RAG 混合检索优化</a></h3>
 <p>从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
-<div class="bento-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
+<div class="explore-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
 </article>
-<article class="bento-card bento-feat">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">02</span>
-<h3><a href="https://github.com/ibqy/agent-orchestration-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">多 Agent 编排系统</a></h3>
+<article class="explore-card explore-featured">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/agent-orchestration-demo" target="_blank" rel="noopener">多 Agent 编排系统</a></h3>
 <p>探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
-<div class="bento-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
+<div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
 </article>
-<article class="bento-card bento-lg">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">03</span>
-<h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Spring AI 实验室</a></h3>
+<article class="explore-card">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/spring-ai-lab" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
 <p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
-<div class="bento-tags"><span>Spring AI</span><span>LLM</span></div>
+<div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
 </article>
-<article class="bento-card bento-lg">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">04</span>
-<h3><a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Semantic Kernel 实践</a></h3>
+<article class="explore-card">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/semantic-kernel-java-teaching-demo" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
 <p>微软 SK 框架的 Java 实现：Kernel 架构、插件系统、Agentic 模式。</p>
-<div class="bento-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
+<div class="explore-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
 </article>
-<article class="bento-card bento-sm">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">05</span>
-<h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">DDD 架构实践</a></h3>
-<p>用电商场景落地四层架构。</p>
-<div class="bento-tags"><span>DDD</span><span>架构</span></div>
+<article class="explore-card">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/ddd-arch-demo" target="_blank" rel="noopener">DDD 架构实践</a></h3>
+<p>用电商场景落地四层架构，真正理解领域驱动设计。</p>
+<div class="explore-tags"><span>DDD</span><span>架构</span></div>
 </article>
-<article class="bento-card bento-sm">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">06</span>
-<h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">微服务架构</a></h3>
-<p>Spring Cloud 全栈实践。</p>
-<div class="bento-tags"><span>Spring Cloud</span><span>微服务</span></div>
+<article class="explore-card">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/spring-cloud-micro-demo" target="_blank" rel="noopener">微服务架构探索</a></h3>
+<p>Spring Cloud 全栈实践：网关、服务发现、熔断、链路追踪。</p>
+<div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
 </article>
-<article class="bento-card bento-sm">
-<span class="bento-arrow">↗</span>
-<span class="bento-num">07</span>
-<h3><a href="https://github.com/ibqy/agentscope-java-teaching-demo" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">AgentScope 多智能体</a></h3>
-<p>Java 多智能体框架探索。</p>
-<div class="bento-tags"><span>AgentScope</span><span>多智能体</span></div>
+<article class="explore-card">
+<span class="explore-arrow">↗</span>
+<h3><a href="https://github.com/ibqy/agentscope-java-teaching-demo" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
+<p>探索 Java 生态的多智能体框架：记忆、流式、协作。</p>
+<div class="explore-tags"><span>AgentScope</span><span>多智能体</span></div>
 </article>
 </div>
 </div>
