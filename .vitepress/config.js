@@ -15,9 +15,9 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '关于', link: '/#philosophy' },
+      { text: '成长', link: '/#journey' },
       { text: '探索', link: '/#explorations' },
       { text: '思考', link: '/#reflections' },
-      { text: 'GitHub', link: 'https://github.com/ibqy' },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ibqy' },
