@@ -14,6 +14,7 @@ hero:
       link: https://github.com/ibqy
 ---
 
+<div class="wrap hero-below">
 <div class="hero-typing">
   <span>I build </span><span class="typed-text" id="typed"></span><span class="typing-cursor"></span>
 </div>
@@ -22,12 +23,15 @@ hero:
   <span>scroll</span>
   <div class="scroll-line"></div>
 </div>
+</div>
 
 <section id="philosophy" class="custom-section">
 <div class="wrap">
-<div class="section-label">PHILOSOPHY</div>
-<h2 class="section-title fade-up">我相信的事</h2>
-<p class="section-sub fade-up">写代码这些年，慢慢沉淀下来的几个信念。</p>
+<div class="section-head fade-up">
+<div class="section-meta"><span class="sec-num">01</span><span class="sec-name">Philosophy</span></div>
+<h2 class="section-title">我相信的事</h2>
+<p class="section-sub">写代码这些年，慢慢沉淀下来的几个信念。</p>
+</div>
 <div class="philosophy-grid fade-up">
 <div class="phil-card">
 <span class="phil-num">01</span>
@@ -48,14 +52,15 @@ hero:
 </div>
 </section>
 
-<section id="journey" class="custom-section section-alt">
+<section id="journey" class="custom-section">
 <div class="wrap">
-<div class="section-label">JOURNEY</div>
-<h2 class="section-title fade-up">成长轨迹</h2>
-<p class="section-sub fade-up">从一个 Java 新手到 AI 工程探索者。</p>
+<div class="section-head fade-up">
+<div class="section-meta"><span class="sec-num">02</span><span class="sec-name">Journey</span></div>
+<h2 class="section-title">成长轨迹</h2>
+<p class="section-sub">从一个 Java 新手到 AI 工程探索者。</p>
+</div>
 <div class="journey-list fade-up">
 <div class="journey-card">
-<div class="journey-dot"></div>
 <div class="journey-body">
 <div class="journey-year">起步</div>
 <h3>Java 基础夯实</h3>
@@ -63,7 +68,6 @@ hero:
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-dot"></div>
 <div class="journey-body">
 <div class="journey-year">进阶</div>
 <h3>微服务与架构设计</h3>
@@ -71,7 +75,6 @@ hero:
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-dot"></div>
 <div class="journey-body">
 <div class="journey-year">突破</div>
 <h3>拥抱 AI 工程</h3>
@@ -79,7 +82,6 @@ hero:
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-dot"></div>
 <div class="journey-body">
 <div class="journey-year">现在</div>
 <h3>持续探索中</h3>
@@ -92,9 +94,11 @@ hero:
 
 <section id="explorations" class="custom-section">
 <div class="wrap">
-<div class="section-label">EXPLORATIONS</div>
-<h2 class="section-title fade-up">探索</h2>
-<p class="section-sub fade-up">每个项目都是一次学习实验。</p>
+<div class="section-head fade-up">
+<div class="section-meta"><span class="sec-num">03</span><span class="sec-name">Explorations</span></div>
+<h2 class="section-title">探索</h2>
+<p class="section-sub">每个项目都是一次学习实验。</p>
+</div>
 <div class="explore-grid fade-up">
 <article class="explore-card explore-featured">
 <span class="explore-arrow">↗</span>
@@ -168,7 +172,7 @@ hero:
 <p>10 节课件 + 6 个渐进式 Demo：通用 CRUD、Lambda 查询、事务边界，一路讲到 BaseMapper 动态代理原理。</p>
 <div class="explore-tags"><span>MyBatis-Plus</span><span>持久层</span><span>源码</span></div>
 </article>
-<article class="explore-card">
+<article class="explore-card explore-wide">
 <span class="explore-arrow">↗</span>
 <h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
 <p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
@@ -178,11 +182,13 @@ hero:
 </div>
 </section>
 
-<section id="reflections" class="custom-section section-alt">
+<section id="reflections" class="custom-section">
 <div class="wrap">
-<div class="section-label">REFLECTIONS</div>
-<h2 class="section-title fade-up">思考</h2>
-<p class="section-sub fade-up">一些关于技术和成长的想法。</p>
+<div class="section-head fade-up">
+<div class="section-meta"><span class="sec-num">04</span><span class="sec-name">Reflections</span></div>
+<h2 class="section-title">思考</h2>
+<p class="section-sub">一些关于技术和成长的想法。</p>
+</div>
 <div id="blogContainer" class="fade-up">
 <div class="skel-list">
 <div class="skel-item"><div class="skel-bar"></div><div class="skel-bar"></div></div>
@@ -197,11 +203,14 @@ hero:
 
 <footer class="site-footer">
 <div class="wrap">
+<div class="footer-brand">ibqy<span class="brand-dot"></span></div>
 <div class="footer-nav">
 <a href="https://github.com/ibqy" target="_blank" rel="noopener">GitHub</a>
 <a href="mailto:1274464354@qq.com">Email</a>
 <a href="https://gitee.com/baiqy" target="_blank" rel="noopener">Gitee</a>
 </div>
+</div>
+<div class="wrap">
 <p class="footer-copy">&copy; 2026 <a href="https://github.com/ibqy">ibqy</a> &middot; 在代码中成长</p>
 <p class="footer-meta">Powered by <a href="https://vitepress.dev" target="_blank" rel="noopener">VitePress</a></p>
 </div>
@@ -307,9 +316,9 @@ onMounted(() => {
       c.innerHTML = '<div class="refl-empty"><p>还没有内容。想法正在酝酿中。</p></div>'
       return
     }
-    c.innerHTML = '<div class="refl-list">' + issues.map((i) =>
+    c.innerHTML = '<div class="refl-list">' + issues.map((i, idx) =>
       '<a href="' + i.html_url + '" class="refl-card" target="_blank" rel="noopener">' +
-      '<div class="refl-icon">&gt;_</div>' +
+      '<div class="refl-icon">' + String(idx + 1).padStart(2, '0') + '</div>' +
       '<div class="refl-body">' +
       '<h4>' + escHtml(i.title) + '</h4>' +
       '<p>' + escHtml(preview(i.body)) + '</p>' +
@@ -321,7 +330,7 @@ onMounted(() => {
   function renderBlogError() {
     const c = document.getElementById('blogContainer')
     if (!c) return
-    c.innerHTML = '<div class="refl-empty"><p>加载失败。前往 <a href="https://github.com/ibqy/ibqy/issues" style="color:var(--accent)">GitHub Issues</a> 查看。</p></div>'
+    c.innerHTML = '<div class="refl-empty"><p>加载失败。前往 <a href="https://github.com/ibqy/ibqy/issues" style="color:var(--red)">GitHub Issues</a> 查看。</p></div>'
   }
 
   loadStats()
