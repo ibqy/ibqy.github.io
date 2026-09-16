@@ -69,6 +69,11 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 
 /* ═══ HERO ═══ */
 .VPHero { padding: 110px 24px 28px !important; }
+.VPHero .container {
+  max-width: 928px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
 .VPHero .name { display: none; }
 .VPHero .main {
   max-width: 820px !important;
@@ -275,6 +280,22 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 .footer-meta { font-size: 10px; color: var(--ink-3); margin-top: 20px; }
 .footer-meta a { color: var(--ink-3); text-decoration: none; }
 .footer-meta a:hover { color: var(--red); }
+
+/* ═══ vp-doc neutralization ═══
+   Home content renders inside .vp-doc, whose default h2/h3/h4/p/a
+   styles out-specify single-class rules. Kill the leaked margins,
+   borders, colors here with higher-specificity selectors. */
+.custom-section .section-title { margin: 22px 0 10px; border-top: 0; padding-top: 0; }
+.custom-section .section-sub { margin: 0 0 40px; }
+.custom-section .btn-ghost { color: var(--ink); font-weight: 600; }
+.custom-section .refl-card { color: inherit; font-weight: 400; }
+
+.phil-card h3, .journey-card h3, .explore-card h3, .refl-card h4 { margin-top: 0; }
+.phil-card p, .journey-card p, .refl-card p, .refl-empty p { margin-top: 0; }
+.explore-card p { margin-top: 0; }
+.phil-card p, .journey-card p { margin-bottom: 0; }
+.site-footer .footer-copy { margin: 20px 0 0; }
+.site-footer .footer-meta { margin: 6px 0 0; }
 
 /* ═══ ANIMATIONS ═══ */
 .fade-up {

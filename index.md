@@ -61,29 +61,29 @@ hero:
 </div>
 <div class="journey-list fade-up">
 <div class="journey-card">
-<div class="journey-body">
 <div class="journey-year">起步</div>
+<div class="journey-body">
 <h3>Java 基础夯实</h3>
 <p>从零开始学 Java，扎实掌握语言基础和 Spring 全家桶。建立了"写出来才能学会"的习惯。</p>
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-body">
 <div class="journey-year">进阶</div>
+<div class="journey-body">
 <h3>微服务与架构设计</h3>
 <p>深入 Spring Cloud 生态，学习 DDD 领域驱动设计。好的代码不只是能跑，更要能维护、能演进。</p>
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-body">
 <div class="journey-year">突破</div>
+<div class="journey-body">
 <h3>拥抱 AI 工程</h3>
 <p>全面转向 AI 工程化方向。从 RAG 检索增强到 Agent 智能体编排，在实践中理解大模型落地的每一个细节。</p>
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-body">
 <div class="journey-year">现在</div>
+<div class="journey-body">
 <h3>持续探索中</h3>
 <p>正在深入研究 AI 原生应用架构，探索如何让 Agent 系统真正可靠地工作。同时保持开源，把学到的东西分享出去。</p>
 </div>
