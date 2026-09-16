@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
 
 /* ═══════════════════════════════════════════════════
-   Swiss Design System — white / ink / red
+   Swiss Design System — white / ink / red (light & dark)
    ═══════════════════════════════════════════════════ */
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --paper: #f7f7f5;
   --ink: #111111;
@@ -27,6 +28,8 @@
   --vp-c-text-3: #a3a3a3;
   --vp-c-divider: #e8e8e6;
   --vp-c-border: #e8e8e6;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f7f7f5;
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: transparent;
   --vp-home-hero-title-font-size: clamp(44px, 9vw, 88px);
@@ -46,13 +49,52 @@
   --vp-font-family-mono: var(--mono);
 }
 
+/* Dark mode — soft charcoal (never pure black), same Swiss grid.
+   html.dark out-specifies both :root and VitePress's own .dark vars. */
+html.dark {
+  color-scheme: dark;
+  --bg: #141414;
+  --paper: #1e1e1e;
+  --ink: #f2f2f0;
+  --ink-2: #b3b3af;
+  --ink-3: #737370;
+  --red: #ff4438;
+  --line: #f2f2f0;
+  --line-2: #2b2b29;
+
+  --vp-c-bg: #141414;
+  --vp-c-bg-alt: #141414;
+  --vp-c-bg-elv: #1e1e1e;
+  --vp-c-bg-soft: #1e1e1e;
+  --vp-c-brand-1: #ff4438;
+  --vp-c-brand-2: #ff5d52;
+  --vp-c-brand-3: #d93227;
+  --vp-c-brand-soft: rgba(255, 68, 56, 0.14);
+  --vp-c-text-1: #f2f2f0;
+  --vp-c-text-2: #b3b3af;
+  --vp-c-text-3: #737370;
+  --vp-c-divider: #2b2b29;
+  --vp-c-border: #2b2b29;
+  --vp-home-hero-tagline-color: #b3b3af;
+  --vp-button-brand-bg: #f2f2f0;
+  --vp-button-brand-text: #111111;
+  --vp-button-brand-hover-bg: #ff4438;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-alt-bg: transparent;
+  --vp-button-alt-border: #f2f2f0;
+  --vp-button-alt-text: #f2f2f0;
+  --vp-button-alt-hover-bg: #f2f2f0;
+  --vp-button-alt-hover-border: #f2f2f0;
+  --vp-button-alt-hover-text: #111111;
+}
+
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; }
-::selection { background: var(--red); color: #fff; }
+::selection { background: var(--red); color: var(--bg); }
 
 /* ═══ NAV ═══ */
 .VPNav {
-  background: #ffffff !important;
+  background: var(--bg) !important;
   border-bottom: 1px solid var(--ink) !important;
 }
 .VPNavBar .content { border-bottom: none !important; }
@@ -66,6 +108,22 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 }
 .VPNavBarMenuLink:hover { color: var(--red) !important; }
 .VPNavBarMenuLink.active { color: var(--red) !important; }
+
+/* ═══ APPEARANCE TOGGLE ═══
+   VitePress only shows the toggle in the navbar at >=1280px — lower it
+   to 960px (where the desktop nav starts) so it never disappears on
+   common laptop widths. Restyled as a Swiss square switch. */
+@media (min-width: 960px) {
+  .VPNavBar .VPNavBarAppearance { display: flex !important; align-items: center; }
+}
+.VPSwitch, .VPSwitch .check { border-radius: 0 !important; }
+.VPSwitch {
+  border: 1px solid var(--ink) !important;
+  background: var(--bg) !important;
+}
+.VPSwitch .check {
+  background: var(--red) !important;
+}
 
 /* ═══ HERO ═══ */
 .VPHero { padding: 110px 24px 28px !important; }
@@ -259,7 +317,7 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
   text-decoration: none; background: transparent;
   transition: background 0.15s, color 0.15s;
 }
-.btn-ghost:hover { background: var(--ink); color: #fff; }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
 
 /* Skeleton */
 .skel-list { border-top: 1px solid var(--ink); }
