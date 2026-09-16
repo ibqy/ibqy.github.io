@@ -196,7 +196,7 @@ hero:
 </div>
 </div>
 <div class="refl-more fade-up">
-<a href="https://github.com/ibqy/ibqy/issues?q=label%3Ablog" class="btn-ghost" target="_blank" rel="noopener">查看全部思考 →</a>
+<a href="https://github.com/ibqy/ibqy.github.io/issues?q=label%3Ablog" class="btn-ghost" target="_blank" rel="noopener">查看全部思考 →</a>
 </div>
 </div>
 </section>
