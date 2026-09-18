@@ -1,95 +1,181 @@
 export function initHud() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-  const isDesktop = window.matchMedia('(pointer: fine)').matches
-
-  initCrosshair(isDesktop)
-  initReadout()
-  initSectionIndicator()
-  initDecodeTitles()
+  initParticles()
+  initHeroDecode()
+  initSectionNav()
+  initSectionReveal()
   initButtonGlitch()
-  initCardMeta()
+
+  const isDesktop = window.matchMedia('(pointer: fine)').matches
+  if (isDesktop) initCardTilt()
 }
 
-function initCrosshair(desktop) {
-  if (!desktop) return
+/* ═══ PARTICLE NETWORK ═══ */
+function initParticles() {
+  const canvas = document.getElementById('particleCanvas')
+  if (!canvas) return
+  const ctx = canvas.getContext('2d')
+  const hero = document.querySelector('.VPHero')
+  if (!hero) return
 
-  const hLine = document.getElementById('hudCrossH')
-  const vLine = document.getElementById('hudCrossV')
-  const dot = document.getElementById('hudCrossDot')
-  if (!hLine || !vLine || !dot) return
+  let w, h, particles = []
+  const isMobile = window.innerWidth <= 768
+  const COUNT = isMobile ? 25 : 55
+  const CONN_DIST = isMobile ? 100 : 150
 
-  let rafId = null
-  let mx = 0, my = 0
-
-  document.addEventListener('mousemove', (e) => {
-    mx = e.clientX
-    my = e.clientY
-    if (rafId) return
-    rafId = requestAnimationFrame(() => {
-      hLine.style.transform = 'translateY(' + my + 'px)'
-      vLine.style.transform = 'translateX(' + mx + 'px)'
-      dot.style.transform = 'translate(' + (mx - 4) + 'px,' + (my - 4) + 'px)'
-      rafId = null
-    })
+  let mouse = { x: -9999, y: -9999 }
+  hero.addEventListener('mousemove', (e) => {
+    const r = canvas.getBoundingClientRect()
+    mouse.x = e.clientX - r.left
+    mouse.y = e.clientY - r.top
+  })
+  hero.addEventListener('mouseleave', () => {
+    mouse.x = -9999
+    mouse.y = -9999
   })
 
-  document.addEventListener('mouseleave', () => {
-    hLine.style.opacity = '0'
-    vLine.style.opacity = '0'
-    dot.style.opacity = '0'
-  })
-  document.addEventListener('mouseenter', () => {
-    hLine.style.opacity = ''
-    vLine.style.opacity = ''
-    dot.style.opacity = ''
-  })
-}
-
-function initReadout() {
-  const elX = document.getElementById('hudX')
-  const elY = document.getElementById('hudY')
-  const elPct = document.getElementById('hudPct')
-  const elSec = document.getElementById('hudSec')
-  if (!elX || !elY || !elPct || !elSec) return
-
-  const sections = Array.from(document.querySelectorAll('.custom-section[id]'))
-  const sectionNames = {
-    philosophy: 'PHI',
-    journey: 'JRN',
-    explorations: 'EXP',
-    reflections: 'REF'
+  function resize() {
+    const r = hero.getBoundingClientRect()
+    w = canvas.width = r.width
+    h = canvas.height = r.height
   }
 
-  let rafId = null
-  function update() {
-    const sx = window.scrollX || window.pageXOffset
-    const sy = window.scrollY || window.pageYOffset
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
-    const pct = maxScroll > 0 ? Math.round((sy / maxScroll) * 100) : 0
+  function createParticle() {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5
+    }
+  }
 
-    elX.textContent = String(Math.round(sx)).padStart(4, '0')
-    elY.textContent = String(Math.round(sy)).padStart(4, '0')
-    elPct.textContent = String(pct).padStart(3, ' ') + '%'
+  function init() {
+    resize()
+    particles = Array.from({ length: COUNT }, createParticle)
+  }
 
-    let current = '---'
-    for (const sec of sections) {
-      const rect = sec.getBoundingClientRect()
-      if (rect.top <= window.innerHeight * 0.4) {
-        current = sectionNames[sec.id] || sec.id.slice(0, 3).toUpperCase()
+  function frame() {
+    ctx.clearRect(0, 0, w, h)
+
+    for (const p of particles) {
+      const dx = mouse.x - p.x
+      const dy = mouse.y - p.y
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      if (dist < 200 && dist > 0) {
+        p.vx += (dx / dist) * 0.015
+        p.vy += (dy / dist) * 0.015
+      }
+
+      p.x += p.vx
+      p.y += p.vy
+      p.vx *= 0.99
+      p.vy *= 0.99
+
+      if (p.x < 0) p.x = w
+      if (p.x > w) p.x = 0
+      if (p.y < 0) p.y = h
+      if (p.y > h) p.y = 0
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x
+        const dy = particles[i].y - particles[j].y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < CONN_DIST) {
+          ctx.beginPath()
+          ctx.moveTo(particles[i].x, particles[i].y)
+          ctx.lineTo(particles[j].x, particles[j].y)
+          ctx.strokeStyle = 'rgba(230, 0, 18, ' + (0.15 * (1 - dist / CONN_DIST)) + ')'
+          ctx.lineWidth = 0.5
+          ctx.stroke()
+        }
       }
     }
-    elSec.textContent = current
-    rafId = null
+
+    for (const p of particles) {
+      ctx.beginPath()
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(230, 0, 18, 0.5)'
+      ctx.fill()
+    }
+
+    requestAnimationFrame(frame)
   }
 
-  window.addEventListener('scroll', () => {
-    if (!rafId) rafId = requestAnimationFrame(update)
-  }, { passive: true })
-  update()
+  init()
+  frame()
+
+  let resizeTimer
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(init, 200)
+  })
 }
 
-function initSectionIndicator() {
+/* ═══ HERO TITLE DECODE ═══ */
+function initHeroDecode() {
+  const el = document.querySelector('.VPHero .text')
+  if (!el) return
+
+  const finalText = el.textContent.trim()
+  if (!finalText) return
+
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&'
+  const len = finalText.length
+
+  el.style.opacity = '1'
+  el.style.webkitTextFillColor = 'var(--ink)'
+  el.textContent = ''
+
+  const spans = Array.from({ length: len }, () => {
+    const s = document.createElement('span')
+    s.textContent = chars[Math.floor(Math.random() * chars.length)]
+    s.style.color = 'var(--red)'
+    s.style.display = 'inline-block'
+    s.style.transition = 'color 0.3s'
+    el.appendChild(s)
+    return s
+  })
+
+  const afterDot = document.createElement('span')
+  afterDot.style.cssText = 'display:inline-block;width:0.13em;height:0.13em;background:var(--red);margin-left:0.08em;vertical-align:middle;'
+  el.appendChild(afterDot)
+
+  let locked = 0
+  const interval = setInterval(() => {
+    spans.forEach((s, i) => {
+      if (i < locked) {
+        s.textContent = finalText[i]
+        s.style.color = 'var(--ink)'
+      } else {
+        s.textContent = chars[Math.floor(Math.random() * chars.length)]
+      }
+    })
+    locked += 0.15
+    if (locked >= len) {
+      clearInterval(interval)
+      spans.forEach((s, i) => {
+        s.textContent = finalText[i]
+        s.style.color = 'var(--ink)'
+      })
+      addScanLine(el)
+    }
+  }, 40)
+}
+
+function addScanLine(el) {
+  const line = document.createElement('div')
+  line.className = 'hero-scan-line'
+  el.style.position = 'relative'
+  el.appendChild(line)
+  line.addEventListener('animationend', () => line.remove())
+}
+
+/* ═══ SECTION NAV ═══ */
+function initSectionNav() {
   const indicator = document.getElementById('hudSectionNav')
   if (!indicator) return
 
@@ -102,9 +188,7 @@ function initSectionIndicator() {
   function setActive(idx) {
     if (idx === activeIdx) return
     activeIdx = idx
-    blocks.forEach((b, i) => {
-      b.classList.toggle('is-active', i === idx)
-    })
+    blocks.forEach((b, i) => b.classList.toggle('is-active', i === idx))
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -145,42 +229,26 @@ function initSectionIndicator() {
   })
 }
 
-function initDecodeTitles() {
-  const titles = document.querySelectorAll('.section-title[data-decode]')
-  if (!titles.length) return
-
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&@'
-  const observed = new Set()
+/* ═══ SECTION REVEAL ═══ */
+function initSectionReveal() {
+  const sections = document.querySelectorAll('.custom-section')
+  if (!sections.length) return
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
-      if (e.isIntersecting && !observed.has(e.target)) {
-        observed.add(e.target)
-        decodeText(e.target, chars)
+      if (e.isIntersecting) {
+        e.target.classList.add('section-visible')
       }
     })
-  }, { threshold: 0.5 })
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' })
 
-  titles.forEach((t) => observer.observe(t))
+  sections.forEach((s) => {
+    s.classList.add('section-hidden')
+    observer.observe(s)
+  })
 }
 
-function decodeText(el, chars) {
-  const final = el.getAttribute('data-decode') || el.textContent
-  const len = final.length
-  let iteration = 0
-  const interval = setInterval(() => {
-    el.textContent = final.split('').map((ch, i) => {
-      if (i < iteration) return final[i]
-      return chars[Math.floor(Math.random() * chars.length)]
-    }).join('')
-    iteration += 1 / 2
-    if (iteration >= len) {
-      el.textContent = final
-      clearInterval(interval)
-    }
-  }, 30)
-}
-
+/* ═══ BUTTON GLITCH ═══ */
 function initButtonGlitch() {
   const btns = document.querySelectorAll('.btn-ghost, .actions .action a')
   btns.forEach((btn) => {
@@ -191,17 +259,38 @@ function initButtonGlitch() {
   })
 }
 
-function initCardMeta() {
-  const cards = document.querySelectorAll('.explore-card')
-  cards.forEach((card, i) => {
-    const sys = card.getAttribute('data-sys')
-    if (!sys) return
-    let label = card.querySelector('.hud-card-sys')
-    if (!label) {
-      label = document.createElement('span')
-      label.className = 'hud-card-sys'
-      card.appendChild(label)
-    }
-    label.textContent = sys
+/* ═══ CARD 3D TILT + LIGHT CHASE ═══ */
+function initCardTilt() {
+  const cards = document.querySelectorAll('.explore-card[data-tilt]')
+  if (!cards.length) return
+
+  cards.forEach((card) => {
+    let rafId = null
+
+    card.addEventListener('mousemove', (e) => {
+      if (rafId) return
+      const rect = card.getBoundingClientRect()
+      const mx = e.clientX - rect.left
+      const my = e.clientY - rect.top
+      const cx = rect.width / 2
+      const cy = rect.height / 2
+      const rx = ((my - cy) / cy) * -6
+      const ry = ((mx - cx) / cx) * 6
+
+      rafId = requestAnimationFrame(() => {
+        card.style.transform =
+          'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.02,1.02,1.02)'
+        card.style.setProperty('--light-x', mx + 'px')
+        card.style.setProperty('--light-y', my + 'px')
+        rafId = null
+      })
+    })
+
+    card.addEventListener('mouseleave', () => {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null }
+      card.style.transform = ''
+      card.style.setProperty('--light-x', '-100%')
+      card.style.setProperty('--light-y', '-100%')
+    })
   })
 }

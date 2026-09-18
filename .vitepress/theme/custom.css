@@ -376,48 +376,36 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 }
 .fade-up.is-visible { opacity: 1; transform: none; }
 
-/* ═══ HUD LAYER ═══ */
+/* ═══ PARTICLE CANVAS ═══ */
+#particleCanvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+.VPHero { position: relative; z-index: 1; }
 
-/* Blueprint grid — very subtle, only visible on hover/scroll */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(var(--line-2) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
-  background-size: 80px 80px;
-  opacity: 0.35;
+/* ═══ HERO SCAN LINE ═══ */
+.hero-scan-line {
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--vp-c-brand-soft) 45%,
+    var(--red) 50%,
+    var(--vp-c-brand-soft) 55%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  pointer-events: none; z-index: 2;
+  animation: heroScanLine 0.8s ease-out forwards;
 }
-html.dark body::before { opacity: 0.18; }
-
-/* Crosshair cursor lines */
-.hud-cross-h, .hud-cross-v {
-  position: fixed; z-index: 9998; pointer-events: none;
-  background: var(--red); opacity: 0.18;
-}
-.hud-cross-h { left: 0; right: 0; height: 1px; }
-.hud-cross-v { top: 0; bottom: 0; width: 1px; }
-.hud-cross-dot {
-  position: fixed; z-index: 9999; pointer-events: none;
-  width: 8px; height: 8px; border: 1px solid var(--red);
-  border-radius: 0; opacity: 0.5;
-}
-@media (pointer: coarse) {
-  .hud-cross-h, .hud-cross-v, .hud-cross-dot { display: none; }
+@keyframes heroScanLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
-/* Readout panel — top-right HUD info */
-.hud-readout {
-  position: fixed; top: 68px; right: 16px; z-index: 100;
-  font-family: var(--mono); font-size: 10px; font-weight: 500;
-  color: var(--ink-3); letter-spacing: 0.08em;
-  line-height: 1.7; pointer-events: none;
-  text-align: right;
-}
-.hud-readout span { display: block; }
-.hud-readout .hud-val { color: var(--red); font-weight: 700; }
-
-/* Section indicator — right edge vertical blocks */
+/* ═══ SECTION NAV (right edge) ═══ */
 .hud-section-nav {
   position: fixed; right: 16px; top: 50%; z-index: 100;
   transform: translateY(-50%);
@@ -447,59 +435,18 @@ html.dark body::before { opacity: 0.18; }
 .hud-sn-block:hover::after,
 .hud-sn-block.is-active::after { opacity: 1; }
 
-/* Card metadata overlay */
-.hud-card-sys {
-  position: absolute; bottom: 6px; right: 8px;
-  font-family: var(--mono); font-size: 9px; font-weight: 500;
-  color: var(--ink-3); letter-spacing: 0.06em;
-  opacity: 0; transition: opacity 0.2s;
-  pointer-events: none;
+/* ═══ READOUT PANEL ═══ */
+.hud-readout {
+  position: fixed; top: 68px; right: 16px; z-index: 100;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-3); letter-spacing: 0.08em;
+  line-height: 1.7; pointer-events: none;
+  text-align: right;
 }
-.explore-card:hover .hud-card-sys { opacity: 1; }
+.hud-readout span { display: block; }
+.hud-readout .hud-val { color: var(--red); font-weight: 700; }
 
-/* Corner brackets on section heads */
-.section-head { position: relative; }
-.section-head::before,
-.section-head::after {
-  content: ''; position: absolute; width: 8px; height: 8px;
-  border-color: var(--red); border-style: solid;
-  opacity: 0.5;
-}
-.section-head::before {
-  top: -2px; left: -12px;
-  border-width: 2px 0 0 2px;
-}
-.section-head::after {
-  top: -2px; right: -12px;
-  border-width: 2px 2px 0 0;
-}
-
-/* Ruler ticks along section top border */
-.section-head {
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--ink) 0px, var(--ink) 1px,
-    transparent 1px, transparent 20px
-  );
-  background-size: 100% 1px;
-  background-position: top;
-  background-repeat: no-repeat;
-}
-
-/* Button glitch effect */
-@keyframes hudGlitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-1px, 1px); }
-  40% { transform: translate(1px, -1px); }
-  60% { transform: translate(-1px, 0); }
-  80% { transform: translate(1px, 1px); }
-  100% { transform: translate(0); }
-}
-.hud-glitch {
-  animation: hudGlitch 0.3s ease;
-}
-
-/* Status bar in hero */
+/* ═══ STATUS BAR ═══ */
 .hud-status-bar {
   display: flex; align-items: center; gap: 16px;
   font-family: var(--mono); font-size: 10px; font-weight: 500;
@@ -518,6 +465,75 @@ html.dark body::before { opacity: 0.18; }
   width: 16px; height: 1px; background: var(--line-2);
 }
 
+/* ═══ CARD 3D TILT + LIGHT CHASE ═══ */
+.explore-card[data-tilt] {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+.explore-card[data-tilt]::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(
+    600px circle at var(--light-x, 50%) var(--light-y, 50%),
+    rgba(230, 0, 18, 0.06),
+    transparent 40%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+html.dark .explore-card[data-tilt]::after {
+  background: radial-gradient(
+    600px circle at var(--light-x, 50%) var(--light-y, 50%),
+    rgba(255, 68, 56, 0.08),
+    transparent 40%
+  );
+}
+.explore-card[data-tilt]:hover::after { opacity: 1; }
+.explore-card[data-tilt] > * { position: relative; z-index: 2; }
+
+/* ═══ SECTION REVEAL ═══ */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-hidden .section-head {
+  transform: scale(0.92);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-hidden .section-head > * {
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+.section-visible {
+  opacity: 1;
+  transform: none;
+}
+.section-visible .section-head {
+  transform: none;
+}
+.section-visible .section-head > * {
+  opacity: 1;
+}
+
+/* ═══ BUTTON GLITCH ═══ */
+@keyframes hudGlitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
+.hud-glitch {
+  animation: hudGlitch 0.3s ease;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
   .custom-section { padding: 56px 20px; }
@@ -531,11 +547,13 @@ html.dark body::before { opacity: 0.18; }
   .explore-featured { box-shadow: inset 0 4px 0 0 var(--red); }
   .site-footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
   .site-footer { padding: 36px 20px 44px; }
-  .hud-readout, .hud-section-nav, .hud-cross-h, .hud-cross-v, .hud-cross-dot,
-  .hud-status-bar { display: none !important; }
-  body::before { display: none; }
-  .section-head::before, .section-head::after { display: none; }
-  .section-head { background-image: none; }
+  .hud-readout, .hud-section-nav, .hud-status-bar { display: none !important; }
+  #particleCanvas { display: none; }
+  .explore-card[data-tilt] { transform: none !important; }
+  .explore-card[data-tilt]::after { display: none; }
+  .section-hidden { opacity: 1; transform: none; }
+  .section-hidden .section-head { transform: none; }
+  .section-hidden .section-head > * { opacity: 1; }
 }
 @media (max-width: 480px) {
   .journey-list { grid-template-columns: 1fr; }
