@@ -7,8 +7,8 @@ hero:
   tagline: "Java 后端开发者，正在探索 AI 工程的边界。相信写代码是最好的学习方式——每一行都是在构建更好的自己。"
   actions:
     - theme: brand
-      text: 我的旅程 ↓
-      link: /#philosophy
+      text: 探索项目 ↓
+      link: /#explorations
     - theme: alt
       text: GitHub ↗
       link: https://github.com/ibqy
@@ -22,17 +22,17 @@ hero:
 </div>
 
 <div class="hud-status-bar">
-  <div class="hud-sb-item"><span class="hud-sb-dot"></span> SYS.ONLINE</div>
+  <div class="hud-sb-item"><span class="hud-sb-dot"></span> 持续探索</div>
   <div class="hud-sb-sep"></div>
-  <div class="hud-sb-item">SEC.04 / 04</div>
+  <div class="hud-sb-item">开源实践</div>
   <div class="hud-sb-sep"></div>
-  <div class="hud-sb-item">v3.0.0</div>
+  <div class="hud-sb-item">Java × AI</div>
 </div>
 
-<div class="scroll-hint">
-  <span>scroll</span>
-  <div class="scroll-line"></div>
-</div>
+<a class="scroll-hint" href="#philosophy">
+  <span>了解更多</span>
+  <span class="scroll-line" aria-hidden="true"></span>
+</a>
 </div>
 
 <!-- HUD overlay elements -->
@@ -50,7 +50,7 @@ hero:
   <div class="hud-sn-block" data-label="04 REF"></div>
 </div>
 
-<section id="philosophy" class="custom-section">
+<section id="philosophy" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">01</span><span class="sec-name">Philosophy</span></div>
@@ -59,17 +59,17 @@ hero:
 </div>
 <div class="philosophy-grid fade-up">
 <div class="phil-card">
-<span class="phil-num">01</span>
+<div class="phil-top"><span class="phil-num">01 / PRACTICE</span><svg class="phil-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg></div>
 <h3>学以致用</h3>
 <p>最好的学习不是读完一本书，而是把学到的东西做出来。写代码就是思考的过程，项目就是成长的证据。</p>
 </div>
 <div class="phil-card">
-<span class="phil-num">02</span>
+<div class="phil-top"><span class="phil-num">02 / DEPTH</span><svg class="phil-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 10 5-10 5L2 7Zm-10 10 10 5 10-5M2 17l10 5 10-5"/></svg></div>
 <h3>深度优先</h3>
 <p>不追求 demo 的数量，关注每个项目背后的工程细节。可运行、可复现、贴近真实——这些才是真正有价值的积累。</p>
 </div>
 <div class="phil-card">
-<span class="phil-num">03</span>
+<div class="phil-top"><span class="phil-num">03 / EVOLVE</span><svg class="phil-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 18 10 12l4 4 6-10m-6 0h6v6M4 4v16h16"/></svg></div>
 <h3>持续进化</h3>
 <p>技术在变，思维方式也要跟着变。从 Spring AI 到 Agent 编排，保持好奇，保持动手，保持进化。</p>
 </div>
@@ -77,7 +77,7 @@ hero:
 </div>
 </section>
 
-<section id="journey" class="custom-section">
+<section id="journey" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">02</span><span class="sec-name">Journey</span></div>
@@ -117,7 +117,7 @@ hero:
 </div>
 </section>
 
-<section id="explorations" class="custom-section">
+<section id="explorations" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">03</span><span class="sec-name">Explorations</span></div>
@@ -207,7 +207,7 @@ hero:
 </div>
 </section>
 
-<section id="reflections" class="custom-section">
+<section id="reflections" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">04</span><span class="sec-name">Reflections</span></div>
@@ -242,9 +242,29 @@ hero:
 </footer>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+
+let homeElement
+
+function focusSection(event) {
+  if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
+  if (!(event.target instanceof Element)) return
+  const link = event.target.closest('a[href^="#"], a[href^="/#"]')
+  if (!link || link.hasAttribute('target') || link.hasAttribute('download')) return
+  const id = link.getAttribute('href').split('#')[1]
+  const section = document.getElementById(id)
+  // VitePress 负责滚动，这里仅同步键盘焦点，避免 Tab 再次回到首屏。
+  if (section?.matches('.custom-section')) section.focus({ preventScroll: true })
+}
+
+onUnmounted(() => {
+  homeElement?.removeEventListener('click', focusSection)
+})
 
 onMounted(() => {
+  homeElement = document.querySelector('.VPHome')
+  homeElement?.addEventListener('click', focusSection)
+
   function typeWrite(el, phrases, speed, pause) {
     let pi = 0, ci = 0, deleting = false
     function tick() {
