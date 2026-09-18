@@ -376,6 +376,148 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 }
 .fade-up.is-visible { opacity: 1; transform: none; }
 
+/* ═══ HUD LAYER ═══ */
+
+/* Blueprint grid — very subtle, only visible on hover/scroll */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.35;
+}
+html.dark body::before { opacity: 0.18; }
+
+/* Crosshair cursor lines */
+.hud-cross-h, .hud-cross-v {
+  position: fixed; z-index: 9998; pointer-events: none;
+  background: var(--red); opacity: 0.18;
+}
+.hud-cross-h { left: 0; right: 0; height: 1px; }
+.hud-cross-v { top: 0; bottom: 0; width: 1px; }
+.hud-cross-dot {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 8px; height: 8px; border: 1px solid var(--red);
+  border-radius: 0; opacity: 0.5;
+}
+@media (pointer: coarse) {
+  .hud-cross-h, .hud-cross-v, .hud-cross-dot { display: none; }
+}
+
+/* Readout panel — top-right HUD info */
+.hud-readout {
+  position: fixed; top: 68px; right: 16px; z-index: 100;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-3); letter-spacing: 0.08em;
+  line-height: 1.7; pointer-events: none;
+  text-align: right;
+}
+.hud-readout span { display: block; }
+.hud-readout .hud-val { color: var(--red); font-weight: 700; }
+
+/* Section indicator — right edge vertical blocks */
+.hud-section-nav {
+  position: fixed; right: 16px; top: 50%; z-index: 100;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.hud-sn-block {
+  width: 10px; height: 28px;
+  border: 1px solid var(--ink-3);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+.hud-sn-block:hover { border-color: var(--ink); }
+.hud-sn-block.is-active {
+  background: var(--red); border-color: var(--red);
+}
+.hud-sn-block::after {
+  content: attr(data-label);
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 9px; font-weight: 600;
+  color: var(--ink-3); letter-spacing: 0.1em;
+  white-space: nowrap; opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+.hud-sn-block:hover::after,
+.hud-sn-block.is-active::after { opacity: 1; }
+
+/* Card metadata overlay */
+.hud-card-sys {
+  position: absolute; bottom: 6px; right: 8px;
+  font-family: var(--mono); font-size: 9px; font-weight: 500;
+  color: var(--ink-3); letter-spacing: 0.06em;
+  opacity: 0; transition: opacity 0.2s;
+  pointer-events: none;
+}
+.explore-card:hover .hud-card-sys { opacity: 1; }
+
+/* Corner brackets on section heads */
+.section-head { position: relative; }
+.section-head::before,
+.section-head::after {
+  content: ''; position: absolute; width: 8px; height: 8px;
+  border-color: var(--red); border-style: solid;
+  opacity: 0.5;
+}
+.section-head::before {
+  top: -2px; left: -12px;
+  border-width: 2px 0 0 2px;
+}
+.section-head::after {
+  top: -2px; right: -12px;
+  border-width: 2px 2px 0 0;
+}
+
+/* Ruler ticks along section top border */
+.section-head {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0px, var(--ink) 1px,
+    transparent 1px, transparent 20px
+  );
+  background-size: 100% 1px;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+/* Button glitch effect */
+@keyframes hudGlitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
+.hud-glitch {
+  animation: hudGlitch 0.3s ease;
+}
+
+/* Status bar in hero */
+.hud-status-bar {
+  display: flex; align-items: center; gap: 16px;
+  font-family: var(--mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-3); letter-spacing: 0.06em;
+  margin-top: 20px;
+}
+.hud-status-bar .hud-sb-item {
+  display: flex; align-items: center; gap: 6px;
+}
+.hud-status-bar .hud-sb-dot {
+  width: 5px; height: 5px; background: var(--red);
+  display: inline-block;
+  animation: blink 2s ease-in-out infinite;
+}
+.hud-status-bar .hud-sb-sep {
+  width: 16px; height: 1px; background: var(--line-2);
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
   .custom-section { padding: 56px 20px; }
@@ -389,6 +531,11 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
   .explore-featured { box-shadow: inset 0 4px 0 0 var(--red); }
   .site-footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
   .site-footer { padding: 36px 20px 44px; }
+  .hud-readout, .hud-section-nav, .hud-cross-h, .hud-cross-v, .hud-cross-dot,
+  .hud-status-bar { display: none !important; }
+  body::before { display: none; }
+  .section-head::before, .section-head::after { display: none; }
+  .section-head { background-image: none; }
 }
 @media (max-width: 480px) {
   .journey-list { grid-template-columns: 1fr; }
