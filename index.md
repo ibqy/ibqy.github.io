@@ -16,7 +16,7 @@ hero:
 
 <div class="wrap hero-below">
 <div class="hero-typing">
-  <span>从后端架构，到 </span><span class="typed-text">AI 工程实践</span>
+  <span>从后端架构，到 </span><span class="typed-text" id="typed"></span><span class="typing-cursor"></span>
 </div>
 
 <div class="hud-status-bar">
@@ -41,81 +41,81 @@ hero:
 <p class="section-sub">从 AI 应用到后端架构，每个项目都是一次学习实验，也是可以继续探索的起点。</p>
 </div>
 <div class="explore-grid fade-up">
-<article class="explore-card explore-featured" data-category="精选 / 检索增强生成">
+<article class="explore-card explore-featured" data-category="精选 / 检索增强生成" data-link="https://ibqy.github.io/rag-hybrid-search-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/rag-hybrid-search-demo/" target="_blank" rel="noopener">RAG 混合检索优化</a></h3>
 <p>从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
 <div class="project-flow" role="group" aria-label="检索处理流程"><span>文档处理</span><span aria-hidden="true">→</span><span>混合检索</span><span aria-hidden="true">→</span><span>重排序</span></div>
 <div class="explore-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
 </article>
-<article class="explore-card explore-featured" data-tone="terracotta" data-category="精选 / 智能体协作">
+<article class="explore-card explore-featured" data-tone="terracotta" data-category="精选 / 智能体协作" data-link="https://ibqy.github.io/agent-orchestration-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/agent-orchestration-demo/" target="_blank" rel="noopener">多 Agent 编排系统</a></h3>
 <p>探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
 <div class="project-flow" role="group" aria-label="智能体协作流程"><span>任务推理</span><span aria-hidden="true">→</span><span>工具调用</span><span aria-hidden="true">→</span><span>协同执行</span></div>
 <div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / Spring 生态">
+<article class="explore-card" data-category="AI 工程 / Spring 生态" data-link="https://ibqy.github.io/spring-ai-lab/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-ai-lab/" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
 <p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
 <div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / 框架实践">
+<article class="explore-card" data-category="AI 工程 / 框架实践" data-link="https://ibqy.github.io/semantic-kernel-java-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/semantic-kernel-java-teaching-demo/" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
 <p>微软 SK 框架的 Java 实现：Kernel 架构、插件系统、Agentic 模式。</p>
 <div class="explore-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
 </article>
-<article class="explore-card" data-tone="amber" data-category="后端架构 / 领域设计">
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 领域设计" data-link="https://ibqy.github.io/ddd-arch-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/ddd-arch-demo/" target="_blank" rel="noopener">DDD 架构实践</a></h3>
 <p>用电商场景落地四层架构，真正理解领域驱动设计。</p>
 <div class="explore-tags"><span>DDD</span><span>架构</span></div>
 </article>
-<article class="explore-card" data-tone="amber" data-category="后端架构 / 微服务">
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 微服务" data-link="https://ibqy.github.io/spring-cloud-micro-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-cloud-micro-demo/" target="_blank" rel="noopener">微服务架构探索</a></h3>
 <p>Spring Cloud 实践：Gateway 统一入口与限流，OpenFeign 声明式服务间调用，附完整启动验证链路。</p>
 <div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / 多智能体">
+<article class="explore-card" data-category="AI 工程 / 多智能体" data-link="https://ibqy.github.io/agentscope-java-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/agentscope-java-teaching-demo/" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
 <p>探索 Java 生态的多智能体框架：记忆、流式、协作。</p>
 <div class="explore-tags"><span>AgentScope</span><span>多智能体</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / 渐进式教学">
+<article class="explore-card" data-category="AI 工程 / 渐进式教学" data-link="https://ibqy.github.io/spring-ai-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-ai-teaching-demo/" target="_blank" rel="noopener">Spring AI 教学实战</a></h3>
 <p>17 个渐进式 Demo：Chat、RAG、工具调用、MCP、多模态、Advisor，从单轮对话走到生产级 AI 应用。</p>
 <div class="explore-tags"><span>Spring AI</span><span>RAG</span><span>工具调用</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / 通义千问">
+<article class="explore-card" data-category="AI 工程 / 通义千问" data-link="https://ibqy.github.io/spring-ai-alibaba-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-ai-alibaba-teaching-demo/" target="_blank" rel="noopener">Spring AI Alibaba 教学</a></h3>
 <p>11 个 Demo 玩转通义千问生态：对话记忆、RAG、工具调用、多智能体，到综合客服与知识型客服实战。</p>
 <div class="explore-tags"><span>通义千问</span><span>DashScope</span><span>多智能体</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / 企业级网关">
+<article class="explore-card" data-category="AI 工程 / 企业级网关" data-link="https://ibqy.github.io/ai-platform-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/ai-platform-demo/" target="_blank" rel="noopener">AI 平台中台实战</a></h3>
 <p>从 0 搭建企业级 AI 网关：14 步网关管道、按成本/性能/质量智能路由、多级缓存与虚拟线程。</p>
 <div class="explore-tags"><span>AI 网关</span><span>智能路由</span><span>多租户</span></div>
 </article>
-<article class="explore-card" data-tone="amber" data-category="后端架构 / 支付系统">
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 支付系统" data-link="https://ibqy.github.io/pay-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/pay-teaching-demo/" target="_blank" rel="noopener">支付对接教学</a></h3>
 <p>支付宝 + 微信支付全流程：统一支付接口、策略工厂渠道路由、异步通知验签、对账引擎与幂等实践。</p>
 <div class="explore-tags"><span>支付</span><span>幂等</span><span>对账</span></div>
 </article>
-<article class="explore-card" data-tone="amber" data-category="后端架构 / 数据持久层">
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 数据持久层" data-link="https://ibqy.github.io/mybatis-plus-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/mybatis-plus-demo/" target="_blank" rel="noopener">MyBatis-Plus 从零到原理</a></h3>
 <p>10 节课件 + 6 个渐进式 Demo：通用 CRUD、Lambda 查询、事务边界，一路讲到 BaseMapper 动态代理原理。</p>
 <div class="explore-tags"><span>MyBatis-Plus</span><span>持久层</span><span>源码</span></div>
 </article>
-<article class="explore-card explore-wide" data-tone="amber" data-category="后端架构 / 工程工具">
+<article class="explore-card explore-wide" data-tone="amber" data-category="后端架构 / 工程工具" data-link="https://ibqy.github.io/hutool-advanced-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
 <p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
@@ -248,6 +248,45 @@ onUnmounted(() => {
 
 onMounted(() => {
   document.addEventListener('click', focusSection)
+
+  // 打字机效果
+  function typeWrite(el, phrases, speed, pause) {
+    let pi = 0, ci = 0, deleting = false
+    function tick() {
+      const phrase = phrases[pi]
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci)
+        if (ci === phrase.length) { deleting = true; setTimeout(tick, pause); return }
+      } else {
+        el.textContent = phrase.slice(0, --ci)
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length }
+      }
+      setTimeout(tick, deleting ? speed / 2 : speed)
+    }
+    tick()
+  }
+
+  const typedEl = document.getElementById('typed')
+  if (typedEl) {
+    typeWrite(typedEl, [
+      'AI 工程实践',
+      'RAG 检索增强',
+      '多智能体编排',
+      '微服务架构',
+      '开源教学项目'
+    ], 100, 2000)
+  }
+
+  // 项目卡片整体可点击
+  document.querySelectorAll('.explore-card[data-link]').forEach(card => {
+    card.style.cursor = 'pointer'
+    card.addEventListener('click', (e) => {
+      // 如果点击的是链接本身，让链接正常处理
+      if (e.target.closest('a')) return
+      const link = card.getAttribute('data-link')
+      if (link) window.open(link, '_blank', 'noopener')
+    })
+  })
 
   async function loadStats() {
     try {
