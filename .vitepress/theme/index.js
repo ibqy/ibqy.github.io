@@ -1,7 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
-import { h, onMounted } from 'vue'
+import { h } from 'vue'
 import './custom.css'
-import { initHud } from './hud.js'
 
 export default {
   extends: DefaultTheme,
@@ -9,12 +8,16 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'home-hero-info-before': () => h('p', { class: 'hero-eyebrow' }, [
         h('span', { class: 'hero-mark', 'aria-hidden': 'true' }, '</>'),
-        'JAVA BACKEND / AI ENGINEERING'
+        '你好，我是 ibqy · Java / AI 开发者'
       ]),
       'home-hero-image': () => h('aside', {
         class: 'hero-focus',
         'aria-labelledby': 'hero-focus-title'
       }, [
+        h('div', { class: 'focus-kicker' }, [
+          h('span', 'BUILD · LEARN · SHARE'),
+          h('span', { class: 'focus-status' }, '持续探索')
+        ]),
         h('div', { class: 'focus-heading' }, [
           h('h2', { id: 'hero-focus-title' }, '把好奇心，写进代码'),
           h('span', { 'aria-hidden': 'true' }, '↗')
@@ -40,11 +43,6 @@ export default {
           h('span', { class: 'focus-arrow', 'aria-hidden': 'true' }, '↗')
         ]))
       ])
-    })
-  },
-  setup() {
-    onMounted(() => {
-      initHud()
     })
   }
 }

@@ -14,11 +14,9 @@ hero:
       link: https://github.com/ibqy
 ---
 
-<canvas id="particleCanvas"></canvas>
-
 <div class="wrap hero-below">
 <div class="hero-typing">
-  <span>I build </span><span class="typed-text" id="typed"></span><span class="typing-cursor"></span>
+  <span>从后端架构，到 </span><span class="typed-text">AI 工程实践</span>
 </div>
 
 <div class="hud-status-bar">
@@ -29,32 +27,109 @@ hero:
   <div class="hud-sb-item">Java × AI</div>
 </div>
 
-<a class="scroll-hint" href="#philosophy">
-  <span>了解更多</span>
+<a class="scroll-hint" href="#explorations">
+  <span>从项目开始</span>
   <span class="scroll-line" aria-hidden="true"></span>
 </a>
 </div>
 
-<!-- HUD overlay elements -->
-<div class="hud-readout">
-  <span>X <span class="hud-val" id="hudX">0000</span></span>
-  <span>Y <span class="hud-val" id="hudY">0000</span></span>
-  <span>SCROLL <span class="hud-val" id="hudPct">  0%</span></span>
-  <span>SEC <span class="hud-val" id="hudSec">---</span></span>
+<section id="explorations" class="custom-section" tabindex="-1">
+<div class="wrap">
+<div class="section-head fade-up">
+<div class="section-meta"><span class="sec-num">01</span><span class="sec-name">Selected work / 开源实践</span></div>
+<h2 class="section-title">把想法，做成项目</h2>
+<p class="section-sub">从 AI 应用到后端架构，每个项目都是一次学习实验，也是可以继续探索的起点。</p>
 </div>
-
-<div class="hud-section-nav" id="hudSectionNav">
-  <div class="hud-sn-block" data-label="01 PHI"></div>
-  <div class="hud-sn-block" data-label="02 JRN"></div>
-  <div class="hud-sn-block" data-label="03 EXP"></div>
-  <div class="hud-sn-block" data-label="04 REF"></div>
+<div class="explore-grid fade-up">
+<article class="explore-card explore-featured" data-category="精选 / 检索增强生成">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/rag-hybrid-search-demo/" target="_blank" rel="noopener">RAG 混合检索优化</a></h3>
+<p>从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
+<div class="project-flow" role="group" aria-label="检索处理流程"><span>文档处理</span><span aria-hidden="true">→</span><span>混合检索</span><span aria-hidden="true">→</span><span>重排序</span></div>
+<div class="explore-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
+</article>
+<article class="explore-card explore-featured" data-tone="terracotta" data-category="精选 / 智能体协作">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/agent-orchestration-demo/" target="_blank" rel="noopener">多 Agent 编排系统</a></h3>
+<p>探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
+<div class="project-flow" role="group" aria-label="智能体协作流程"><span>任务推理</span><span aria-hidden="true">→</span><span>工具调用</span><span aria-hidden="true">→</span><span>协同执行</span></div>
+<div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / Spring 生态">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-ai-lab/" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
+<p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
+<div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / 框架实践">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/semantic-kernel-java-teaching-demo/" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
+<p>微软 SK 框架的 Java 实现：Kernel 架构、插件系统、Agentic 模式。</p>
+<div class="explore-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
+</article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 领域设计">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/ddd-arch-demo/" target="_blank" rel="noopener">DDD 架构实践</a></h3>
+<p>用电商场景落地四层架构，真正理解领域驱动设计。</p>
+<div class="explore-tags"><span>DDD</span><span>架构</span></div>
+</article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 微服务">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-cloud-micro-demo/" target="_blank" rel="noopener">微服务架构探索</a></h3>
+<p>Spring Cloud 实践：Gateway 统一入口与限流，OpenFeign 声明式服务间调用，附完整启动验证链路。</p>
+<div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / 多智能体">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/agentscope-java-teaching-demo/" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
+<p>探索 Java 生态的多智能体框架：记忆、流式、协作。</p>
+<div class="explore-tags"><span>AgentScope</span><span>多智能体</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / 渐进式教学">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-ai-teaching-demo/" target="_blank" rel="noopener">Spring AI 教学实战</a></h3>
+<p>17 个渐进式 Demo：Chat、RAG、工具调用、MCP、多模态、Advisor，从单轮对话走到生产级 AI 应用。</p>
+<div class="explore-tags"><span>Spring AI</span><span>RAG</span><span>工具调用</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / 通义千问">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-ai-alibaba-teaching-demo/" target="_blank" rel="noopener">Spring AI Alibaba 教学</a></h3>
+<p>11 个 Demo 玩转通义千问生态：对话记忆、RAG、工具调用、多智能体，到综合客服与知识型客服实战。</p>
+<div class="explore-tags"><span>通义千问</span><span>DashScope</span><span>多智能体</span></div>
+</article>
+<article class="explore-card" data-category="AI 工程 / 企业级网关">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/ai-platform-demo/" target="_blank" rel="noopener">AI 平台中台实战</a></h3>
+<p>从 0 搭建企业级 AI 网关：14 步网关管道、按成本/性能/质量智能路由、多级缓存与虚拟线程。</p>
+<div class="explore-tags"><span>AI 网关</span><span>智能路由</span><span>多租户</span></div>
+</article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 支付系统">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/pay-teaching-demo/" target="_blank" rel="noopener">支付对接教学</a></h3>
+<p>支付宝 + 微信支付全流程：统一支付接口、策略工厂渠道路由、异步通知验签、对账引擎与幂等实践。</p>
+<div class="explore-tags"><span>支付</span><span>幂等</span><span>对账</span></div>
+</article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 数据持久层">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/mybatis-plus-demo/" target="_blank" rel="noopener">MyBatis-Plus 从零到原理</a></h3>
+<p>10 节课件 + 6 个渐进式 Demo：通用 CRUD、Lambda 查询、事务边界，一路讲到 BaseMapper 动态代理原理。</p>
+<div class="explore-tags"><span>MyBatis-Plus</span><span>持久层</span><span>源码</span></div>
+</article>
+<article class="explore-card explore-wide" data-tone="amber" data-category="后端架构 / 工程工具">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
+<p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
+<div class="explore-tags"><span>Hutool</span><span>工具库</span><span>生产场景</span></div>
+</article>
 </div>
+</div>
+</section>
 
 <section id="philosophy" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
-<div class="section-meta"><span class="sec-num">01</span><span class="sec-name">Philosophy</span></div>
-<h2 class="section-title" data-decode="我相信的事">我相信的事</h2>
+<div class="section-meta"><span class="sec-num">02</span><span class="sec-name">Philosophy</span></div>
+<h2 class="section-title">我相信的事</h2>
 <p class="section-sub">写代码这些年，慢慢沉淀下来的几个信念。</p>
 </div>
 <div class="philosophy-grid fade-up">
@@ -63,12 +138,12 @@ hero:
 <h3>学以致用</h3>
 <p>最好的学习不是读完一本书，而是把学到的东西做出来。写代码就是思考的过程，项目就是成长的证据。</p>
 </div>
-<div class="phil-card">
+<div class="phil-card" data-tone="amber">
 <div class="phil-top"><span class="phil-num">02 / DEPTH</span><svg class="phil-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 10 5-10 5L2 7Zm-10 10 10 5 10-5M2 17l10 5 10-5"/></svg></div>
 <h3>深度优先</h3>
 <p>不追求 demo 的数量，关注每个项目背后的工程细节。可运行、可复现、贴近真实——这些才是真正有价值的积累。</p>
 </div>
-<div class="phil-card">
+<div class="phil-card" data-tone="terracotta">
 <div class="phil-top"><span class="phil-num">03 / EVOLVE</span><svg class="phil-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 18 10 12l4 4 6-10m-6 0h6v6M4 4v16h16"/></svg></div>
 <h3>持续进化</h3>
 <p>技术在变，思维方式也要跟着变。从 Spring AI 到 Agent 编排，保持好奇，保持动手，保持进化。</p>
@@ -80,34 +155,34 @@ hero:
 <section id="journey" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
-<div class="section-meta"><span class="sec-num">02</span><span class="sec-name">Journey</span></div>
-<h2 class="section-title" data-decode="成长轨迹">成长轨迹</h2>
+<div class="section-meta"><span class="sec-num">03</span><span class="sec-name">Journey</span></div>
+<h2 class="section-title">成长轨迹</h2>
 <p class="section-sub">从一个 Java 新手到 AI 工程探索者。</p>
 </div>
 <div class="journey-list fade-up">
-<div class="journey-card">
-<div class="journey-year">起步</div>
+<div class="journey-card" data-tone="amber">
+<div class="journey-year">01 / 起步</div>
 <div class="journey-body">
 <h3>Java 基础夯实</h3>
 <p>从零开始学 Java，扎实掌握语言基础和 Spring 全家桶。建立了"写出来才能学会"的习惯。</p>
 </div>
 </div>
-<div class="journey-card">
-<div class="journey-year">进阶</div>
+<div class="journey-card" data-tone="amber">
+<div class="journey-year">02 / 进阶</div>
 <div class="journey-body">
 <h3>微服务与架构设计</h3>
 <p>深入 Spring Cloud 生态，学习 DDD 领域驱动设计。好的代码不只是能跑，更要能维护、能演进。</p>
 </div>
 </div>
 <div class="journey-card">
-<div class="journey-year">突破</div>
+<div class="journey-year">03 / 突破</div>
 <div class="journey-body">
 <h3>拥抱 AI 工程</h3>
 <p>全面转向 AI 工程化方向。从 RAG 检索增强到 Agent 智能体编排，在实践中理解大模型落地的每一个细节。</p>
 </div>
 </div>
-<div class="journey-card">
-<div class="journey-year">现在</div>
+<div class="journey-card" data-tone="terracotta">
+<div class="journey-year">04 / 现在</div>
 <div class="journey-body">
 <h3>持续探索中</h3>
 <p>正在深入研究 AI 原生应用架构，探索如何让 Agent 系统真正可靠地工作。同时保持开源，把学到的东西分享出去。</p>
@@ -117,101 +192,11 @@ hero:
 </div>
 </section>
 
-<section id="explorations" class="custom-section" tabindex="-1">
-<div class="wrap">
-<div class="section-head fade-up">
-<div class="section-meta"><span class="sec-num">03</span><span class="sec-name">Explorations</span></div>
-<h2 class="section-title" data-decode="探索">探索</h2>
-<p class="section-sub">每个项目都是一次学习实验。</p>
-</div>
-<div class="explore-grid fade-up">
-<article class="explore-card explore-featured" data-tilt data-sys="SYS.001 // RAG-HYBRID">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/rag-hybrid-search-demo/" target="_blank" rel="noopener">RAG 混合检索优化</a></h3>
-<p>从文档预处理到 Rerank 重排序，完整实践 RAG 全链路优化。这个项目让我真正理解了"检索质量决定生成质量"。</p>
-<div class="explore-tags"><span>RAG</span><span>混合检索</span><span>Rerank</span></div>
-</article>
-<article class="explore-card explore-featured" data-tilt data-sys="SYS.002 // AGENT-ORCH">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/agent-orchestration-demo/" target="_blank" rel="noopener">多 Agent 编排系统</a></h3>
-<p>探索复杂 Agent 系统的构建方法：推理模式、状态持久化、分层记忆、工具调用与熔断防护。</p>
-<div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.003 // SPRING-AI">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/spring-ai-lab/" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
-<p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
-<div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.004 // SEM-KERNEL">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/semantic-kernel-java-teaching-demo/" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
-<p>微软 SK 框架的 Java 实现：Kernel 架构、插件系统、Agentic 模式。</p>
-<div class="explore-tags"><span>Semantic Kernel</span><span>Agentic</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.005 // DDD-ARCH">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/ddd-arch-demo/" target="_blank" rel="noopener">DDD 架构实践</a></h3>
-<p>用电商场景落地四层架构，真正理解领域驱动设计。</p>
-<div class="explore-tags"><span>DDD</span><span>架构</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.006 // MICRO-SVC">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/spring-cloud-micro-demo/" target="_blank" rel="noopener">微服务架构探索</a></h3>
-<p>Spring Cloud 实践：Gateway 统一入口与限流，OpenFeign 声明式服务间调用，附完整启动验证链路。</p>
-<div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.007 // AGENT-SCP">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/agentscope-java-teaching-demo/" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
-<p>探索 Java 生态的多智能体框架：记忆、流式、协作。</p>
-<div class="explore-tags"><span>AgentScope</span><span>多智能体</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.008 // SAI-TEACH">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/spring-ai-teaching-demo/" target="_blank" rel="noopener">Spring AI 教学实战</a></h3>
-<p>17 个渐进式 Demo：Chat、RAG、工具调用、MCP、多模态、Advisor，从单轮对话走到生产级 AI 应用。</p>
-<div class="explore-tags"><span>Spring AI</span><span>RAG</span><span>工具调用</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.009 // SAI-ALI">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/spring-ai-alibaba-teaching-demo/" target="_blank" rel="noopener">Spring AI Alibaba 教学</a></h3>
-<p>11 个 Demo 玩转通义千问生态：对话记忆、RAG、工具调用、多智能体，到综合客服与知识型客服实战。</p>
-<div class="explore-tags"><span>通义千问</span><span>DashScope</span><span>多智能体</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.010 // AI-GATEWAY">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/ai-platform-demo/" target="_blank" rel="noopener">AI 平台中台实战</a></h3>
-<p>从 0 搭建企业级 AI 网关：14 步网关管道、按成本/性能/质量智能路由、多级缓存与虚拟线程。</p>
-<div class="explore-tags"><span>AI 网关</span><span>智能路由</span><span>多租户</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.011 // PAY-SYS">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/pay-teaching-demo/" target="_blank" rel="noopener">支付对接教学</a></h3>
-<p>支付宝 + 微信支付全流程：统一支付接口、策略工厂渠道路由、异步通知验签、对账引擎与幂等实践。</p>
-<div class="explore-tags"><span>支付</span><span>幂等</span><span>对账</span></div>
-</article>
-<article class="explore-card" data-tilt data-sys="SYS.012 // MBP-CRUD">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/mybatis-plus-demo/" target="_blank" rel="noopener">MyBatis-Plus 从零到原理</a></h3>
-<p>10 节课件 + 6 个渐进式 Demo：通用 CRUD、Lambda 查询、事务边界，一路讲到 BaseMapper 动态代理原理。</p>
-<div class="explore-tags"><span>MyBatis-Plus</span><span>持久层</span><span>源码</span></div>
-</article>
-<article class="explore-card explore-wide" data-tilt data-sys="SYS.013 // HUTOOL-ADV">
-<span class="explore-arrow">↗</span>
-<h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
-<p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
-<div class="explore-tags"><span>Hutool</span><span>工具库</span><span>生产场景</span></div>
-</article>
-</div>
-</div>
-</section>
-
 <section id="reflections" class="custom-section" tabindex="-1">
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">04</span><span class="sec-name">Reflections</span></div>
-<h2 class="section-title" data-decode="思考">思考</h2>
+<h2 class="section-title">思考与记录</h2>
 <p class="section-sub">一些关于技术和成长的想法。</p>
 </div>
 <div id="blogContainer" class="fade-up">
@@ -242,9 +227,7 @@ hero:
 </footer>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
-
-let homeElement
+import { nextTick, onMounted, onUnmounted } from 'vue'
 
 function focusSection(event) {
   if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
@@ -254,65 +237,17 @@ function focusSection(event) {
   const id = link.getAttribute('href').split('#')[1]
   const section = document.getElementById(id)
   // VitePress 负责滚动，这里仅同步键盘焦点，避免 Tab 再次回到首屏。
-  if (section?.matches('.custom-section')) section.focus({ preventScroll: true })
+  if (section?.matches('.custom-section')) {
+    nextTick(() => section.focus({ preventScroll: true }))
+  }
 }
 
 onUnmounted(() => {
-  homeElement?.removeEventListener('click', focusSection)
+  document.removeEventListener('click', focusSection)
 })
 
 onMounted(() => {
-  homeElement = document.querySelector('.VPHome')
-  homeElement?.addEventListener('click', focusSection)
-
-  function typeWrite(el, phrases, speed, pause) {
-    let pi = 0, ci = 0, deleting = false
-    function tick() {
-      const phrase = phrases[pi]
-      if (!deleting) {
-        el.textContent = phrase.slice(0, ++ci)
-        if (ci === phrase.length) { deleting = true; setTimeout(tick, pause); return }
-      } else {
-        el.textContent = phrase.slice(0, --ci)
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length }
-      }
-      setTimeout(tick, deleting ? speed / 2 : speed)
-    }
-    tick()
-  }
-
-  const typedEl = document.getElementById('typed')
-  if (typedEl) {
-    typeWrite(typedEl, [
-      'backend systems',
-      'AI agents',
-      'RAG pipelines',
-      'microservices',
-      'open-source tools',
-      'things that learn from'
-    ], 80, 2000)
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-visible') })
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el))
-
-  const journeyCards = document.querySelectorAll('.journey-card')
-  journeyCards.forEach((card, i) => {
-    card.style.opacity = '0'
-    card.style.transform = 'translateY(20px)'
-    card.style.transition = 'opacity 0.5s ease ' + (i * 0.12) + 's, transform 0.5s ease ' + (i * 0.12) + 's'
-  })
-  const jObserver = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1'
-        e.target.style.transform = 'translateY(0)'
-      }
-    })
-  }, { threshold: 0.15 })
-  journeyCards.forEach((c) => jObserver.observe(c))
+  document.addEventListener('click', focusSection)
 
   async function loadStats() {
     try {

@@ -13,9 +13,9 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
+      { text: '项目', link: '/#explorations' },
       { text: '关于', link: '/#philosophy' },
       { text: '成长', link: '/#journey' },
-      { text: '探索', link: '/#explorations' },
       { text: '思考', link: '/#reflections' },
     ],
     socialLinks: [
