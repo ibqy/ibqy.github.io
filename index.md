@@ -79,6 +79,12 @@ hero:
 <p>Spring Cloud 实践：Gateway 统一入口与限流，OpenFeign 声明式服务间调用，附完整启动验证链路。</p>
 <div class="explore-tags"><span>Spring Cloud</span><span>微服务</span></div>
 </article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / Spring 进阶" data-link="https://ibqy.github.io/spring-advanced-demo/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-advanced-demo/" target="_blank" rel="noopener">Spring Boot 高级特性</a></h3>
+<p>Spring Boot 4.1 + Framework 7.0 实战：gRPC、虚拟线程、AOT/Native Image、可观测性、Security 等 11 个进阶 Demo。</p>
+<div class="explore-tags"><span>Spring Boot</span><span>gRPC</span><span>虚拟线程</span></div>
+</article>
 <article class="explore-card" data-category="AI 工程 / 多智能体" data-link="https://ibqy.github.io/agentscope-java-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/agentscope-java-teaching-demo/" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
