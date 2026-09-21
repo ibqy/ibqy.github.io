@@ -121,7 +121,7 @@ hero:
 <p>10 节课件 + 6 个渐进式 Demo：通用 CRUD、Lambda 查询、事务边界，一路讲到 BaseMapper 动态代理原理。</p>
 <div class="explore-tags"><span>MyBatis-Plus</span><span>持久层</span><span>源码</span></div>
 </article>
-<article class="explore-card explore-wide" data-tone="amber" data-category="后端架构 / 工程工具" data-link="https://ibqy.github.io/hutool-advanced-demo/">
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 工程工具" data-link="https://ibqy.github.io/hutool-advanced-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
 <p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
