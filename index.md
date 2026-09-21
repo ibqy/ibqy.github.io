@@ -82,7 +82,7 @@ hero:
 <article class="explore-card" data-tone="amber" data-category="后端架构 / Spring 进阶" data-link="https://ibqy.github.io/spring-advanced-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-advanced-demo/" target="_blank" rel="noopener">Spring Boot 高级特性</a></h3>
-<p>Spring Boot 4.1 + Framework 7.0 实战：gRPC、虚拟线程、AOT/Native Image、可观测性、Security 等 11 个进阶 Demo。</p>
+<p>Spring Boot 4.1 + Framework 7.0 实战：gRPC、虚拟线程、AOT/Native Image、可观测性、Security 等 10 个进阶 Demo。</p>
 <div class="explore-tags"><span>Spring Boot</span><span>gRPC</span><span>虚拟线程</span></div>
 </article>
 <article class="explore-card" data-category="AI 工程 / 多智能体" data-link="https://ibqy.github.io/agentscope-java-teaching-demo/">
@@ -94,7 +94,7 @@ hero:
 <article class="explore-card" data-category="AI 工程 / 渐进式教学" data-link="https://ibqy.github.io/spring-ai-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/spring-ai-teaching-demo/" target="_blank" rel="noopener">Spring AI 教学实战</a></h3>
-<p>17 个渐进式 Demo：Chat、RAG、工具调用、MCP、多模态、Advisor，从单轮对话走到生产级 AI 应用。</p>
+<p>18 个渐进式 Demo：Chat、RAG、工具调用、MCP、多模态、Advisor，从单轮对话走到生产级 AI 应用。</p>
 <div class="explore-tags"><span>Spring AI</span><span>RAG</span><span>工具调用</span></div>
 </article>
 <article class="explore-card" data-category="AI 工程 / 通义千问" data-link="https://ibqy.github.io/spring-ai-alibaba-teaching-demo/">
@@ -124,7 +124,7 @@ hero:
 <article class="explore-card" data-tone="amber" data-category="后端架构 / 工程工具" data-link="https://ibqy.github.io/hutool-advanced-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/hutool-advanced-demo/" target="_blank" rel="noopener">Hutool 高级用法</a></h3>
-<p>9 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
+<p>13 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
 <div class="explore-tags"><span>Hutool</span><span>工具库</span><span>生产场景</span></div>
 </article>
 </div>
