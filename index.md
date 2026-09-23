@@ -55,12 +55,6 @@ hero:
 <div class="project-flow" role="group" aria-label="智能体协作流程"><span>任务推理</span><span aria-hidden="true">→</span><span>工具调用</span><span aria-hidden="true">→</span><span>协同执行</span></div>
 <div class="explore-tags"><span>Agent</span><span>多智能体</span><span>编排</span></div>
 </article>
-<article class="explore-card" data-category="AI 工程 / Spring 生态" data-link="https://ibqy.github.io/spring-ai-lab/">
-<span class="explore-arrow" aria-hidden="true">↗</span>
-<h3><a href="https://ibqy.github.io/spring-ai-lab/" target="_blank" rel="noopener">Spring AI 实验室</a></h3>
-<p>在 Spring 生态中实践 LLM 应用：对话、流式、结构化输出、工具调用。</p>
-<div class="explore-tags"><span>Spring AI</span><span>LLM</span></div>
-</article>
 <article class="explore-card" data-category="AI 工程 / 框架实践" data-link="https://ibqy.github.io/semantic-kernel-java-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/semantic-kernel-java-teaching-demo/" target="_blank" rel="noopener">Semantic Kernel 实践</a></h3>
