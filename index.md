@@ -103,6 +103,12 @@ hero:
 <p>11 个 Demo 玩转通义千问生态：对话记忆、RAG、工具调用、多智能体，到综合客服与知识型客服实战。</p>
 <div class="explore-tags"><span>通义千问</span><span>DashScope</span><span>多智能体</span></div>
 </article>
+<article class="explore-card" data-category="AI 工程 / 图编排" data-link="https://ibqy.github.io/spring-ai-alibaba-graph-demo/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/spring-ai-alibaba-graph-demo/" target="_blank" rel="noopener">Spring AI Alibaba Graph 学习实战</a></h3>
+<p>18 个渐进式 Demo：从状态、分支与并行，到检查点、人工审批和流式输出，最终完成工单、报销与研报流程。</p>
+<div class="explore-tags"><span>StateGraph</span><span>工作流</span><span>人工审批</span></div>
+</article>
 <article class="explore-card" data-category="AI 工程 / 企业级网关" data-link="https://ibqy.github.io/ai-platform-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/ai-platform-demo/" target="_blank" rel="noopener">AI 平台中台实战</a></h3>
