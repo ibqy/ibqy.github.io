@@ -109,6 +109,12 @@ hero:
 <p>18 个渐进式 Demo：从状态、分支与并行，到检查点、人工审批和流式输出，最终完成工单、报销与研报流程。</p>
 <div class="explore-tags"><span>StateGraph</span><span>工作流</span><span>人工审批</span></div>
 </article>
+<article class="explore-card" data-category="AI 工程 / 可恢复工作流" data-link="https://ibqy.github.io/langgraph4j-teaching-demo/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/langgraph4j-teaching-demo/" target="_blank" rel="noopener">LangGraph4j 学习实战</a></h3>
+<p>18 课原生图编排：状态合并、并行子图、检查点恢复与模型工具，完成工单、多级审批和研究报告闭环。</p>
+<div class="explore-tags"><span>LangGraph4j</span><span>LangChain4j</span><span>检查点</span></div>
+</article>
 <article class="explore-card" data-category="AI 工程 / 企业级网关" data-link="https://ibqy.github.io/ai-platform-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/ai-platform-demo/" target="_blank" rel="noopener">AI 平台中台实战</a></h3>
