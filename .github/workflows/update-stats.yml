@@ -4,32 +4,62 @@ on:
     - cron: '0 8 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Fetch & write stats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           mkdir -p data
+
+          # 统一带认证请求，避免匿名调用被限流(403)后返回非 JSON
+          api() {
+            curl -fsSL \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              "https://api.github.com/$1"
+          }
+
+          profile=$(api "users/ibqy") || { echo "fetch profile failed"; exit 1; }
+
+          # 只做加法汇总，天然为 JSON 数组；add // 0 保证空列表也安全
+          stars=$(api "users/ibqy/repos?per_page=100&type=public" \
+            | jq '[.[] | .stargazers_count // 0] | add // 0')
+
+          # 白名单截取数字，脏值一律归零，杜绝 tonumber 抛错
+          to_int() { echo "${1:-}" | jq -R 'scan("[0-9]+") // "0"' | tr -d '"'; }
+          repos=$(to_int "$(echo "$profile" | jq -r '.public_repos // 0')")
+          followers=$(to_int "$(echo "$profile" | jq -r '.followers // 0')")
+          stars=$(to_int "$stars")
+
           jq -n \
             --arg updated "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            --arg repos "$(curl -s https://api.github.com/users/ibqy | jq -r '.public_repos // 0')" \
-            --arg followers "$(curl -s https://api.github.com/users/ibqy | jq -r '.followers // 0')" \
-            --arg stars "$(curl -s "https://api.github.com/users/ibqy/repos?per_page=100&type=public" | jq '[.[].stargazers_count] // [] | add // 0')" \
-            '{updated:$updated,public_repos:($repos|tonumber),followers:($followers|tonumber),total_stars:($stars|tonumber)}' \
+            --argjson repos "$repos" \
+            --argjson followers "$followers" \
+            --argjson stars "$stars" \
+            '{updated:$updated,public_repos:$repos,followers:$followers,total_stars:$stars}' \
             > data/stats.json
+
+          cat data/stats.json
 
       - name: Commit & push
         run: |
+          set -euo pipefail
           git config user.name "ibqy[bot]"
           git config user.email "bot@ibqy.dev"
           git add data/stats.json
-          git diff --cached --quiet && echo "No changes" || {
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
             git commit -m "auto: refresh stats [skip ci]"
             git push
-          }
+          fi
