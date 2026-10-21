@@ -178,6 +178,12 @@ hero:
 <p>13 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
 <div class="explore-tags"><span>阶段 0</span><span>Hutool</span><span>工具库</span><span>生产场景</span></div>
 </article>
+<article class="explore-card explore-cta" data-category="全部项目 / ALL PROJECTS">
+<span class="explore-arrow" aria-hidden="true">→</span>
+<h3><a href="/curriculum">查看完整学习路线</a></h3>
+<p>15 个项目、依赖关系、预计学时与验收标准，一条路线读完。</p>
+<div class="explore-tags"><span>15 个项目</span><span>学习路线</span><span>验收标准</span></div>
+</article>
 </div>
 </div>
 </section>
@@ -257,9 +263,16 @@ hero:
 <p class="section-sub">一些关于技术和成长的想法。</p>
 </div>
 <div id="blogContainer" class="fade-up">
-<div class="skel-list">
-<div class="skel-item"><div class="skel-bar"></div><div class="skel-bar"></div></div>
-<div class="skel-item"><div class="skel-bar"></div><div class="skel-bar"></div></div>
+<div class="refl-list">
+<a v-for="(post, idx) in fallbackPosts" :key="post.html_url" :href="post.html_url" class="refl-card" target="_blank" rel="noopener">
+<div class="refl-icon">{{ String(idx + 1).padStart(2, '0') }}</div>
+<div class="refl-body">
+<h4>{{ post.title }}</h4>
+<p>{{ post.excerpt }}</p>
+<div class="refl-date">{{ new Date(post.created_at).toLocaleDateString('zh-CN') }}</div>
+</div>
+<span class="refl-arrow" aria-hidden="true">↗</span>
+</a>
 </div>
 </div>
 <div class="refl-more fade-up">
@@ -285,6 +298,7 @@ hero:
 
 <script setup>
 import { nextTick, onMounted, onUnmounted } from 'vue'
+import fallbackPosts from './data/reflections.json'
 
 function focusSection(event) {
   if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return
@@ -367,6 +381,10 @@ onMounted(() => {
     }
   }
 
+  const CACHE_KEY = 'ibqy:reflections:v1'
+  const CACHE_TTL = 30 * 60 * 1000
+  const ISSUES_API = 'https://api.github.com/repos/ibqy/ibqy.github.io/issues?labels=blog&state=open&per_page=5&sort=created&direction=desc'
+
   function escHtml(s) {
     const d = document.createElement('div')
     d.appendChild(document.createTextNode(s))
@@ -375,40 +393,101 @@ onMounted(() => {
 
   function preview(body) {
     return (body || '')
+      .replace(/```[\s\S]*?```/g, ' ')
       .split('\n')
-      .filter((l) => !l.trim().startsWith('#'))
-      .map((l) => l.replace(/^\s*[-*]\s+/, ''))
+      .map((l) => l.trim())
+      .filter((l) => l && !l.startsWith('#') && !l.startsWith('|') && !/^([-*_]\s*){3,}$/.test(l))
+      .map((l) => l.replace(/^>\s?/, '').replace(/^[-*+]\s+/, ''))
       .join(' ')
-      .replace(/\*\*?|__?|`/g, '')
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/<[^>]+>/g, '')
+      .replace(/[*_`~]/g, '')
       .replace(/\s+/g, ' ')
       .trim()
-      .slice(0, 120)
+      .slice(0, 140)
   }
 
-  function renderBlog(issues) {
+  function formatDate(value) {
+    const date = new Date(value)
+    return Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString('zh-CN')
+  }
+
+  function renderBlog(posts) {
     const c = document.getElementById('blogContainer')
     if (!c) return
-    if (!issues.length) {
-      c.innerHTML = '<div class="refl-empty"><p>还没有内容。想法正在酝酿中。</p></div>'
+    if (!Array.isArray(posts) || !posts.length) {
+      c.innerHTML = '<div class="refl-empty"><p>还没有公开的思考。去 <a href="https://github.com/ibqy/ibqy.github.io/issues/new?labels=blog" target="_blank" rel="noopener">GitHub Issues</a> 写下第一篇。</p></div>'
       return
     }
-    c.innerHTML = '<div class="refl-list">' + issues.map((i, idx) =>
-      '<a href="' + i.html_url + '" class="refl-card" target="_blank" rel="noopener">' +
+    c.innerHTML = '<div class="refl-list">' + posts.map((post, idx) =>
+      '<a href="' + post.html_url + '" class="refl-card" target="_blank" rel="noopener">' +
       '<div class="refl-icon">' + String(idx + 1).padStart(2, '0') + '</div>' +
       '<div class="refl-body">' +
-      '<h4>' + escHtml(i.title) + '</h4>' +
-      '<p>' + escHtml(preview(i.body)) + '</p>' +
-      '<div class="refl-date">' + new Date(i.created_at).toLocaleDateString('zh-CN') + '</div>' +
-      '</div></a>'
+      '<h4>' + escHtml(post.title) + '</h4>' +
+      '<p>' + escHtml(preview(post.excerpt || post.body)) + '</p>' +
+      '<div class="refl-date">' + formatDate(post.created_at) + '</div>' +
+      '</div>' +
+      '<span class="refl-arrow" aria-hidden="true">↗</span>' +
+      '</a>'
     ).join('') + '</div>'
   }
 
-  function renderBlogError() {
-    const c = document.getElementById('blogContainer')
-    if (!c) return
-    c.innerHTML = '<div class="refl-empty"><p>加载失败。前往 <a href="https://github.com/ibqy/ibqy/issues" style="color:var(--red)">GitHub Issues</a> 查看。</p></div>'
+  function readCache() {
+    try {
+      const raw = sessionStorage.getItem(CACHE_KEY)
+      if (!raw) return null
+      const cached = JSON.parse(raw)
+      if (!cached || Date.now() - cached.at > CACHE_TTL) return null
+      return Array.isArray(cached.posts) && cached.posts.length ? cached.posts : null
+    } catch (_) {
+      return null
+    }
   }
 
-  loadStats()
+  function writeCache(posts) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), posts }))
+    } catch (_) {
+      /* 隐私模式或存储已满时忽略 */
+    }
+  }
+
+  async function loadPosts() {
+    try {
+      const res = await fetch(ISSUES_API)
+      if (!res.ok) throw new Error('HTTP ' + res.status)
+      const issues = await res.json()
+      const posts = issues
+        .map((issue) => ({
+          title: issue.title,
+          excerpt: preview(issue.body),
+          created_at: issue.created_at,
+          html_url: issue.html_url
+        }))
+        .filter((post) => post.title && post.html_url)
+      if (posts.length) {
+        renderBlog(posts)
+        writeCache(posts)
+      } else if (!fallbackPosts.length) {
+        renderBlog([])
+      }
+    } catch (_) {
+      // 匿名 API 限流（403）或离线时保留本地兜底内容，不再误报“没有内容”
+      if (!fallbackPosts.length) {
+        const c = document.getElementById('blogContainer')
+        if (c) c.innerHTML = '<div class="refl-empty"><p>暂时无法同步。前往 <a href="https://github.com/ibqy/ibqy.github.io/issues?q=label%3Ablog" target="_blank" rel="noopener">GitHub Issues</a> 查看全部思考。</p></div>'
+      }
+    }
+  }
+
+  // 先用随仓库发布的兜底内容渲染，再尝试在线刷新
+  renderBlog(fallbackPosts)
+  const cachedPosts = readCache()
+  if (cachedPosts) {
+    renderBlog(cachedPosts)
+  } else {
+    loadPosts()
+  }
 })
 </script>

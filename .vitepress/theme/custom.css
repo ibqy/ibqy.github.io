@@ -19,7 +19,7 @@
   --red: #4a3555;
   --red-soft: #f0e8f5;
   --red-border: #c9b5d4;
-  --amber: #b8860b;
+  --amber: #8a6508;
   --amber-soft: #f5edcf;
   --amber-border: #d4c48a;
   --focus-bg: #193e35;
@@ -283,7 +283,7 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 
 /* ═══ SECTIONS ═══ */
 .custom-section { padding: 48px 24px; }
-.custom-section:not(#explorations) > .wrap {
+.custom-section:not(#explorations):not(#learning-path) > .wrap {
   display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px 32px;
 }
 #reflections .section-head { grid-row: span 2; }
@@ -410,11 +410,23 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
 }
 .explore-wide { grid-column: span 4; }
 
+/* 课程区不再被侧栏挤压：5 张阶段卡按 3 + 2 铺满整行 */
+@media (min-width: 960px) {
+  #learning-path .explore-grid > .explore-card:nth-child(n + 4) { grid-column: span 3; }
+}
+.explore-cta {
+  grid-column: span 4; background: transparent; border-style: dashed;
+}
+.explore-cta:hover, .explore-cta:focus-within {
+  background: var(--accent-soft); border-style: solid;
+}
+.explore-cta .explore-tags span { background: transparent; }
+
 /* ═══ REFLECTIONS ═══ */
 .refl-list { border-top: 1px solid var(--line-2); }
 .refl-card {
   display: flex; align-items: flex-start; gap: 18px;
-  padding: 18px 0; border-bottom: 1px solid var(--line-2);
+  position: relative; padding: 20px 44px 20px 0; border-bottom: 1px solid var(--line-2);
   text-decoration: none; color: inherit;
 }
 .refl-card:hover h4, .refl-card:focus-visible h4 { color: var(--accent); }
@@ -424,13 +436,22 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
   padding: 6px; border-radius: 6px; text-align: center; background: var(--amber-soft);
 }
 .refl-body { flex: 1; min-width: 0; }
-.refl-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--ink); transition: color 0.15s; }
+.refl-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: var(--ink); transition: color 0.15s; }
 .refl-card p {
   font-size: 14px; color: var(--ink-2); line-height: 1.65;
   overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
   -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
 }
-.refl-date { font-family: var(--mono); font-size: 12px; color: var(--ink-3); margin-top: 5px; }
+.refl-date { font-family: var(--mono); font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.refl-arrow {
+  position: absolute; right: 4px; top: 22px;
+  font-family: var(--mono); font-size: 15px; color: var(--ink-3);
+  transition: color 0.15s, transform 0.15s;
+}
+.refl-card:hover .refl-arrow, .refl-card:focus-visible .refl-arrow {
+  color: var(--accent); transform: translate(2px, -2px);
+}
+.refl-empty a { color: var(--accent); font-weight: 600; }
 .refl-empty { padding: 28px; font-size: 14px; color: var(--ink-2); background: var(--amber-soft); border: 1px solid var(--amber-border); border-radius: 12px; }
 .refl-more { margin-top: 24px; }
 .btn-ghost {
@@ -442,15 +463,6 @@ body { background: var(--bg) !important; color: var(--ink); overflow-x: hidden; 
   transition: background 0.15s, color 0.15s;
 }
 .custom-section .btn-ghost:hover { background: var(--accent); color: var(--on-accent); }
-
-/* Skeleton */
-.skel-list { border-top: 1px solid var(--ink); }
-.skel-item { padding: 18px 0; border-bottom: 1px solid var(--line-2); animation: skelPulse 2s ease-in-out infinite; }
-.skel-bar { height: 10px; background: var(--line-2); margin-bottom: 6px; }
-.skel-bar:last-child { margin-bottom: 0; }
-.skel-bar:nth-child(1) { width: 28%; }
-.skel-bar:nth-child(2) { width: 55%; }
-@keyframes skelPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.6; } }
 
 /* ═══ FOOTER ═══ */
 .site-footer { border-top: 1px solid var(--accent-border); background: var(--accent-soft); border-radius: 16px 16px 0 0; padding: 32px 24px; }
@@ -661,7 +673,7 @@ html.dark .explore-card[data-tilt]::after {
 }
 @media (max-width: 959px) {
   .VPHero { padding: 96px 24px 32px !important; }
-  .custom-section:not(#explorations) > .wrap { grid-template-columns: minmax(0, 1fr); }
+  .custom-section:not(#explorations):not(#learning-path) > .wrap { grid-template-columns: minmax(0, 1fr); }
   #reflections .section-head { grid-row: auto; }
   #reflections .refl-more { grid-column: auto; }
   .VPHero .container { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 0 !important; }
@@ -673,6 +685,7 @@ html.dark .explore-card[data-tilt]::after {
   .journey-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .explore-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .explore-card, .explore-featured { grid-column: span 1; }
+  .explore-cta { grid-column: span 2; }
   .explore-wide { grid-column: span 2; }
   .hud-status-bar { display: none !important; }
   #particleCanvas { display: none; }
@@ -695,6 +708,7 @@ html.dark .explore-card[data-tilt]::after {
   .hero-below { margin: 0 20px; gap: 4px 12px; }
   .philosophy-grid, .journey-list, .explore-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .explore-card, .explore-featured, .explore-wide { grid-column: span 1; }
+  .explore-cta { grid-column: span 1; }
   .phil-top { margin-bottom: 12px; }
   .journey-card { padding: 16px; }
   .explore-card { padding: 18px; }
