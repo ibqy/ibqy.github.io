@@ -13,11 +13,16 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
+      { text: '学习路径', link: '/curriculum' },
       { text: '项目', link: '/#explorations' },
       { text: '关于', link: '/#philosophy' },
       { text: '成长', link: '/#journey' },
       { text: '思考', link: '/#reflections' },
     ],
+    sidebar: false,
+    outline: { level: [2, 3], label: '本页目录' },
+    docFooter: { prev: '上一篇', next: '下一篇' },
+    returnToTopLabel: '回到顶部',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ibqy' },
     ],
