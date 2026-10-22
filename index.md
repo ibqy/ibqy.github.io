@@ -40,7 +40,7 @@ hero:
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">00</span><span class="sec-name">Curriculum / 学习路径</span></div>
-<h2 class="section-title">15 个项目，一条进阶路线</h2>
+<h2 class="section-title">16 个项目，一条进阶路线</h2>
 <p class="section-sub">按依赖关系排列，由浅入深。每一站都有可运行代码、配套课件与验收标准。<a href="/curriculum">查看完整路线 →</a></p>
 </div>
 <div class="explore-grid fade-up">
@@ -50,11 +50,11 @@ hero:
 <div class="project-flow" role="group" aria-label="阶段 0 包含项目"><span>Hutool 高级用法</span><span aria-hidden="true">→</span><span>MyBatis-Plus 从零到原理</span></div>
 <div class="explore-tags"><span>约 12h</span><span>工程规范</span><span>持久层</span></div>
 </article>
-<article class="explore-card" data-tone="amber" data-category="阶段 1 / 架构与资金安全">
-<h3><a href="/curriculum">阶段 1 · 架构与资金安全</a></h3>
-<p>从“写接口”升级到“划分边界、设计状态、保障一致性”。资金类系统的幂等、状态机、对账都有可运行实现。</p>
-<div class="project-flow" role="group" aria-label="阶段 1 包含项目"><span>DDD</span><span aria-hidden="true">→</span><span>Spring Cloud</span><span aria-hidden="true">→</span><span>Spring Boot 高阶</span><span aria-hidden="true">→</span><span>支付对接</span></div>
-<div class="explore-tags"><span>约 36h</span><span>分层架构</span><span>幂等对账</span></div>
+<article class="explore-card" data-tone="amber" data-category="阶段 1 / 架构、缓存与资金安全">
+<h3><a href="/curriculum">阶段 1 · 架构、缓存与资金安全</a></h3>
+<p>从“写接口”升级到“划分边界、设计状态、保障一致性”。缓存的正确性、锁的失败路径与资金类系统的幂等对账都有可运行实现。</p>
+<div class="project-flow" role="group" aria-label="阶段 1 包含项目"><span>DDD</span><span aria-hidden="true">→</span><span>Spring Cloud</span><span aria-hidden="true">→</span><span>Spring Boot 高阶</span><span aria-hidden="true">→</span><span>Redis 高并发</span><span aria-hidden="true">→</span><span>支付对接</span></div>
+<div class="explore-tags"><span>约 44h</span><span>分层架构</span><span>缓存限流</span><span>幂等对账</span></div>
 </article>
 <article class="explore-card" data-category="阶段 2 / AI 应用工程入门">
 <h3><a href="/curriculum">阶段 2 · AI 应用工程入门</a></h3>
@@ -160,6 +160,12 @@ hero:
 <p>从 0 搭建企业级 AI 网关：14 步网关管道、按成本/性能/质量智能路由、多级缓存与虚拟线程。</p>
 <div class="explore-tags"><span>阶段 4</span><span>AI 网关</span><span>智能路由</span><span>多租户</span></div>
 </article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 高并发与缓存" data-link="https://ibqy.github.io/redis-advanced-demo/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/redis-advanced-demo/" target="_blank" rel="noopener">Redis 与高并发</a></h3>
+<p>穿透、击穿、雪崩与一致性时序，分布式锁的四个坑，四种限流算法，热点 key 与两级缓存——每个结论都有可复现的接口与离线测试。</p>
+<div class="explore-tags"><span>阶段 1</span><span>Redis</span><span>缓存</span><span>限流</span></div>
+</article>
 <article class="explore-card" data-tone="amber" data-category="后端架构 / 支付系统" data-link="https://ibqy.github.io/pay-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/pay-teaching-demo/" target="_blank" rel="noopener">支付对接教学</a></h3>
@@ -181,8 +187,8 @@ hero:
 <article class="explore-card explore-cta" data-category="全部项目 / ALL PROJECTS">
 <span class="explore-arrow" aria-hidden="true">→</span>
 <h3><a href="/curriculum">查看完整学习路线</a></h3>
-<p>15 个项目、依赖关系、预计学时与验收标准，一条路线读完。</p>
-<div class="explore-tags"><span>15 个项目</span><span>学习路线</span><span>验收标准</span></div>
+<p>16 个项目、依赖关系、预计学时与验收标准，一条路线读完。</p>
+<div class="explore-tags"><span>16 个项目</span><span>学习路线</span><span>验收标准</span></div>
 </article>
 </div>
 </div>
