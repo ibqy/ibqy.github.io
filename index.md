@@ -40,7 +40,7 @@ hero:
 <div class="wrap">
 <div class="section-head fade-up">
 <div class="section-meta"><span class="sec-num">00</span><span class="sec-name">Curriculum / 学习路径</span></div>
-<h2 class="section-title">16 个项目，一条进阶路线</h2>
+<h2 class="section-title">17 个项目，一条进阶路线</h2>
 <p class="section-sub">按依赖关系排列，由浅入深。每一站都有可运行代码、配套课件与验收标准。<a href="/curriculum">查看完整路线 →</a></p>
 </div>
 <div class="explore-grid fade-up">
@@ -53,8 +53,8 @@ hero:
 <article class="explore-card" data-tone="amber" data-category="阶段 1 / 架构、缓存与资金安全">
 <h3><a href="/curriculum">阶段 1 · 架构、缓存与资金安全</a></h3>
 <p>从“写接口”升级到“划分边界、设计状态、保障一致性”。缓存的正确性、锁的失败路径与资金类系统的幂等对账都有可运行实现。</p>
-<div class="project-flow" role="group" aria-label="阶段 1 包含项目"><span>DDD</span><span aria-hidden="true">→</span><span>Spring Cloud</span><span aria-hidden="true">→</span><span>Spring Boot 高阶</span><span aria-hidden="true">→</span><span>Redis 高并发</span><span aria-hidden="true">→</span><span>支付对接</span></div>
-<div class="explore-tags"><span>约 44h</span><span>分层架构</span><span>缓存限流</span><span>幂等对账</span></div>
+<div class="project-flow" role="group" aria-label="阶段 1 包含项目"><span>DDD</span><span aria-hidden="true">→</span><span>Spring Cloud</span><span aria-hidden="true">→</span><span>Spring Boot 高阶</span><span aria-hidden="true">→</span><span>Quarkus</span><span aria-hidden="true">→</span><span>Redis 高并发</span><span aria-hidden="true">→</span><span>支付对接</span></div>
+<div class="explore-tags"><span>约 52h</span><span>分层架构</span><span>缓存限流</span><span>幂等对账</span></div>
 </article>
 <article class="explore-card" data-category="阶段 2 / AI 应用工程入门">
 <h3><a href="/curriculum">阶段 2 · AI 应用工程入门</a></h3>
@@ -124,6 +124,12 @@ hero:
 <p>Spring Boot 4.1 + Framework 7.0 实战：gRPC、虚拟线程、AOT/Native Image、可观测性、Security 等 10 个进阶 Demo。</p>
 <div class="explore-tags"><span>阶段 1</span><span>Spring Boot</span><span>gRPC</span><span>虚拟线程</span></div>
 </article>
+<article class="explore-card" data-tone="amber" data-category="后端架构 / 云原生运行时" data-link="https://ibqy.github.io/quarkus-teaching-demo/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/quarkus-teaching-demo/" target="_blank" rel="noopener">Quarkus 云原生运行时</a></h3>
+<p>12 课把构建期模型跑一遍：ArC 注入、Panache、虚拟线程、容错与 Native Image，50 个用例离线全绿。</p>
+<div class="explore-tags"><span>阶段 1</span><span>Quarkus</span><span>构建期增强</span><span>Native Image</span></div>
+</article>
 <article class="explore-card" data-category="AI 工程 / 多智能体" data-link="https://ibqy.github.io/agentscope-java-teaching-demo/">
 <span class="explore-arrow" aria-hidden="true">↗</span>
 <h3><a href="https://ibqy.github.io/agentscope-java-teaching-demo/" target="_blank" rel="noopener">AgentScope 多智能体</a></h3>
@@ -187,8 +193,8 @@ hero:
 <article class="explore-card explore-cta" data-category="全部项目 / ALL PROJECTS">
 <span class="explore-arrow" aria-hidden="true">→</span>
 <h3><a href="/curriculum">查看完整学习路线</a></h3>
-<p>16 个项目、依赖关系、预计学时与验收标准，一条路线读完。</p>
-<div class="explore-tags"><span>16 个项目</span><span>学习路线</span><span>验收标准</span></div>
+<p>17 个项目、依赖关系、预计学时与验收标准，一条路线读完。</p>
+<div class="explore-tags"><span>17 个项目</span><span>学习路线</span><span>验收标准</span></div>
 </article>
 </div>
 </div>

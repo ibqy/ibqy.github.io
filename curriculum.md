@@ -1,16 +1,16 @@
 ---
 title: 学习路径
-description: 16 个开源项目串成的一条 Java × AI 进阶路线：从工程地基到生产级 AI 工程
+description: 17 个开源项目串成的一条 Java × AI 进阶路线：从工程地基到生产级 AI 工程
 ---
 
 # Java × AI 进阶学习路径
 
 > 这不是一份"框架清单"，而是一条**有先后依赖关系的工程能力路线**。
-> 16 个项目按"能读懂 → 能改动 → 能设计"三级递进排列，每个项目都有可运行代码、配套课件与验收标准。
+> 17 个项目按"能读懂 → 能改动 → 能设计"三级递进排列，每个项目都有可运行代码、配套课件与验收标准。
 
 <div class="path-meta">
 
-**总课时** 约 130 小时 ｜ **项目** 16 个 ｜ **技术基线** Java 21 · Spring Boot 4.1.1 / 3.5.16 · Spring AI 2.0.1 / 1.1.8
+**总课时** 约 138 小时 ｜ **项目** 17 个 ｜ **技术基线** Java 21 · Spring Boot 4.1.1 / 3.5.16 · Quarkus 3.40.1 · Spring AI 2.0.1 / 1.1.8
 
 </div>
 
@@ -19,7 +19,7 @@ description: 16 个开源项目串成的一条 Java × AI 进阶路线：从工�
 | 阶段 | 主题 | 项目 | 建议投入 | 学完你能做什么 |
 |:---:|:---|:---|:---:|:---|
 | **0** | 工程地基 | Hutool 高级用法、MyBatis-Plus 从零到原理 | 12h | 写出符合生产规范的 CRUD 与工具层代码 |
-| **1** | 架构、缓存与资金安全 | DDD 架构、微服务、Spring 高阶、Redis 高并发、支付对接 | 44h | 独立设计分层架构、拆服务、治理缓存与限流、处理幂等与对账 |
+| **1** | 架构、缓存与资金安全 | DDD 架构、微服务、Spring 高阶、Quarkus、Redis 高并发、支付对接 | 52h | 独立设计分层架构、拆服务、治理缓存与限流、处理幂等与对账 |
 | **2** | AI 应用工程入门 | Spring AI、Spring AI Alibaba、Semantic Kernel、AgentScope | 40h | 用四种框架搭出可用的 AI 应用 |
 | **3** | 图编排与可恢复工作流 | SAA Graph、LangGraph4j、Agent 编排 | 32h | 设计可中断、可恢复、可审计的 Agent 流程 |
 | **4** | 生产级 AI 工程 | RAG 高阶优化、AI 平台中台 | 24h | 做检索质量评估与企业级 AI 网关 |
@@ -75,14 +75,21 @@ description: 16 个开源项目串成的一条 Java × AI 进阶路线：从工�
 - **高阶点**：全部基于 Spring Boot 4.1 + Framework 7.0，覆盖 Boot 4 的 AOP starter 移除等迁移坑
 - **验收**：能用虚拟线程改造阻塞调用并给出压测对比，能打出 native image
 
-### 1.4 Redis 与高并发
+### 1.4 Quarkus 云原生运行时
+
+- **课件**：[quarkus-teaching-demo](https://ibqy.github.io/quarkus-teaching-demo/) ｜ **源码**：[GitHub](https://github.com/ibqy/quarkus-teaching-demo)
+- **核心内容**：12 课 —— 构建期增强与闭世界假设、ArC 依赖注入、Jakarta REST 与校验、三类配置、Panache、事务与 CDI 事件、三种线程模型、调度与容错、可观测性、Native Image 反射、压测
+- **高阶点**：与 1.3 对照学习——同一件事在"运行时反射"与"构建期生成"两套假设下的不同解法；`@Retry` 与 `@Timeout` 的嵌套顺序经实测验证
+- **验收**：能说清哪些工作被搬到了构建期、代价是什么，能解释 `Instance` 为什么必须配 `@Any`
+
+### 1.5 Redis 与高并发
 
 - **课件**：[redis-advanced-demo](https://ibqy.github.io/redis-advanced-demo/) ｜ **源码**：[GitHub](https://github.com/ibqy/redis-advanced-demo)
 - **核心内容**：缓存三大问题（布隆过滤 + 空值缓存、互斥重建 vs 逻辑过期、TTL 抖动）、四种写策略的时序推演、分布式锁的四个坑、四种限流算法、热点 key 探测与两级缓存、语义缓存
 - **高阶点**：每个结论都对应一个可复现的接口与 64 个测试；默认 memory 后端，`mvn verify` 完全离线
 - **验收**：能复现「误删他人锁」与「固定窗口边界双倍」，能说清延迟双删的成立条件与 L1 缓存的一致性代价
 
-### 1.5 支付对接实战
+### 1.6 支付对接实战
 
 - **课件**：[pay-teaching-demo](https://ibqy.github.io/pay-teaching-demo/) ｜ **源码**：[GitHub](https://github.com/ibqy/pay-teaching-demo)
 - **核心内容**：统一支付接口与策略工厂、渠道路由引擎、状态机守卫、幂等切面、异步通知验签、事件驱动 + 死信队列、对账引擎
