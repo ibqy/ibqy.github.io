@@ -190,6 +190,12 @@ hero:
 <p>13 大模块生产场景示例：HTTP 客户端、缓存选型、Cron 定时、JWT 鉴权、AOP 代理、Excel 与树结构。</p>
 <div class="explore-tags"><span>阶段 0</span><span>Hutool</span><span>工具库</span><span>生产场景</span></div>
 </article>
+<article class="explore-card" data-category="AI 工程 / 场景速查" data-link="https://ibqy.github.io/ai-engineering-handbook/">
+<span class="explore-arrow" aria-hidden="true">↗</span>
+<h3><a href="https://ibqy.github.io/ai-engineering-handbook/" target="_blank" rel="noopener">AI 开发场景问答手册</a></h3>
+<p>从常见问题到高阶场景：按主题、难度和实际症状查阅，结合已有实战仓库理解方案取舍与验证方法，持续补充。</p>
+<div class="explore-tags"><span>场景问答</span><span>工程取舍</span><span>持续更新</span></div>
+</article>
 <article class="explore-card explore-cta" data-category="全部项目 / ALL PROJECTS">
 <span class="explore-arrow" aria-hidden="true">→</span>
 <h3><a href="/curriculum">查看完整学习路线</a></h3>

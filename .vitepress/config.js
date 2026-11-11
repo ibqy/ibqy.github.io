@@ -14,6 +14,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '学习路径', link: '/curriculum' },
+      { text: 'AI 问答', link: 'https://ibqy.github.io/ai-engineering-handbook/' },
       { text: '项目', link: '/#explorations' },
       { text: '关于', link: '/#philosophy' },
       { text: '成长', link: '/#journey' },
